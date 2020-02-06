@@ -7,7 +7,7 @@ import style from './suggested-posts.module.less'
 
 const SuggestedPosts = ({ posts }) => (
   <div>
-    <p className={style.title}>Did you like it? Why don't you try also...</p>
+    <p className={style.title}>Si te gusto este post, revisa más aquí...</p>
     <PostList posts={posts} />
   </div>
 )

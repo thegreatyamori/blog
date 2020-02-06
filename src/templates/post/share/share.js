@@ -9,6 +9,7 @@ import {
   TumblrShareButton,
   RedditShareButton,
   WhatsappShareButton,
+  TelegramShareButton,
   EmailShareButton,
 } from 'react-share'
 import { IconContext } from 'react-icons'
@@ -20,6 +21,7 @@ import {
   FaTumblrSquare,
   FaRedditSquare,
   FaWhatsappSquare,
+  FaTelegram,
   FaEnvelopeSquare,
 } from 'react-icons/fa'
 import style from './share.module.less'
@@ -66,6 +68,12 @@ const Share = ({ pageCanonicalUrl, title, description, tags, coverUrl }) => (
         >
           <FaWhatsappSquare color="#01e675" />
         </WhatsappShareButton>
+        <TelegramShareButton
+          url={pageCanonicalUrl}
+          title={title}
+        >
+          <FaTelegram color="#31ADE0" />
+        </TelegramShareButton>
         <EmailShareButton url={pageCanonicalUrl} subject={title}>
           <FaEnvelopeSquare color="#333333" />
         </EmailShareButton>

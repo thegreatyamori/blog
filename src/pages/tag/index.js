@@ -46,7 +46,7 @@ const Tag = ({ data }) => {
               <p>{Config.tags[tag].description}</p>
               <label>{`${
                 rawTags.filter(sTag => sTag === tag).length
-              } Posts`}</label>
+              } Entrada/s`}</label>
             </div>
           </Link>
         ))}

@@ -1,58 +1,76 @@
 
 module.exports = {
-  pathPrefix: '/gatsby-starter-developer-blog',
+  pathPrefix: '/blog',
   siteUrl: 'https://lgcolella.github.io',
-  siteTitle: 'Luigi Colella',
-  siteDescription: 'Logbook of a software developer',
-  author: 'lcolella',
+  siteTitle: 'jerson alexander',
+  siteDescription: 'desarrollador front-end y un poco más...',
+  author: 'thegreatyamori',
   postsForArchivePage: 3,
-  defaultLanguage: 'en',
+  defaultLanguage: 'es',
   disqusScript: 'https://luigi-colella.disqus.com/embed.js',
   pages: {
     home: '/',
     blog: 'blog',
     about: 'about',
     tag: 'tag',
-    archive: 'archive'
+    archive: 'archive',
   },
   social: {
-    github: 'https://github.com/lgcolella',
-    linkedin: '',
-    rss: '/rss.xml'
+    github: 'https://github.com/thegreatyamori',
+    linkedin: 'https://www.linkedin.com/in/jerson-morocho-0b9ab3161/',
+    instagram: 'https://www.instagram.com/jersonaleksander/',
+  },
+  footer: {
+    jsEcuador: {
+      telegram: 'https://t.me/javascriptecuador',
+      twitter: 'https://twitter.com/jsecuador_',
+      web: '',
+    },
+    gatsby: 'https://www.gatsbyjs.org/',
+    gPages: 'https://pages.github.com/',
   },
   tags: {
     angular: {
-      description: 'Angular is an open source web application platform.'
+      description:
+        'Angular es una plataforma de codigo abierto, para desarrollo de aplicaciones web.',
     },
     electron: {
-      description: 'Electron is a framework for building cross-platform desktop applications with web technology.'
+      description:
+        'Electron es un framework para construir aplicaciones de escritorio multiplataforma con tecnología web.',
     },
     javascript: {
-      description: 'JavaScript is an object-oriented programming language used alongside HTML and CSS to give functionality to web pages.'
+      description:
+        'JavaScript es un lenguaje de programación orientado a objetos que se usa junto con HTML y CSS para dar funcionalidad a las páginas web.',
     },
     laravel: {
-      description: 'Laravel is a PHP framework for building web applications following the MVC pattern.'
+      description:
+        'Laravel es un marco de trabajo PHP para construir aplicaciones web siguiendo el patrón MVC.',
     },
     nodejs: {
       name: 'Node.js',
-      description: 'Node.js is a tool for executing JavaScript in a variety of environments.'
+      description:
+        'Node.js es una herramienta para ejecutar JavaScript en una variedad de entornos.',
     },
     rxjs: {
       name: 'RxJS',
-      description: 'RxJS is a library for reactive programming using Observables, to make it easier to compose asynchronous or callback-based code.'
+      description:
+        'RxJS es una librería para programación reactiva usando Observables, para facilitar la composición de código asíncrono o basado en llamadas.',
     },
     sass: {
-      description: 'Sass is a stable extension to classic CSS.'
+      description: 'Sass es una extensión estable del clásico CSS.',
     },
     typescript: {
-      description: 'TypeScript is a typed superset of JavaScript that compiles to plain JavaScript.'
+      description:
+        'TypeScript es un superconjunto mecanografiado de JavaScript que compila a JavaScript simple.',
     },
     react: {
-      description: 'React is an open source JavaScript library used for designing user interfaces.'
+      description:
+        'React es una biblioteca de JavaScript de código abierto usada para diseñar interfaces de usuario.',
     },
     vuejs: {
       name: 'Vue.js',
-      description: 'Vue.js is a JavaScript framework for building interactive web applications.'
-    }
-  }
+      description:
+        'Vue.js es un marco de trabajo de JavaScript para construir aplicaciones web interactivas.',
+    },
+  },
 }

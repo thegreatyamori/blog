@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
-import { FaBars, FaTimes, FaGithub, FaLinkedin, FaRss } from 'react-icons/fa'
+import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 /* App imports */
 import useEvent from '../../hooks/useEvent'
 import style from './header.module.less'
@@ -61,13 +61,13 @@ const Header = () => {
       >
         <ul>
           <li>
-            <Link to={Utils.resolvePageUrl(Config.pages.home)}>Home</Link>
+            <Link to={Utils.resolvePageUrl(Config.pages.home)}>Inicio</Link>
           </li>
           <li>
             <Link to={Utils.resolvePageUrl(Config.pages.tag)}>Tags</Link>
           </li>
           <li>
-            <Link to={Utils.resolvePageUrl(Config.pages.about)}>About</Link>
+            <Link to={Utils.resolvePageUrl(Config.pages.about)}>Sobre mí</Link>
           </li>
         </ul>
         <ul>
@@ -90,9 +90,13 @@ const Header = () => {
             </a>
           </li>
           <li>
-            <Link to={Utils.resolveUrl(Config.social.rss)}>
-              <FaRss size="30" />
-            </Link>
+            <a
+              target="_blank"
+              rel="nofollow noopener noreferrer"
+              href={Config.social.instagram}
+            >
+              <FaInstagram size="30" />
+            </a>
           </li>
         </ul>
       </div>

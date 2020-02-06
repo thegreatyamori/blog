@@ -14,20 +14,20 @@ const ArticleHeading = ({ excerpt, date, time, translations }) => (
     </div>
     <label>
       <strong>
-        <FaRegCalendarAlt /> Date:{' '}
+        <FaRegCalendarAlt /> Fecha:{' '}
       </strong>
       <span>{date}</span>
     </label>
     <label>
       <strong>
-        <FaRegClock /> Time to read:{' '}
+        <FaRegClock /> Tiempo de lectura:{' '}
       </strong>
       <span>{time}m</span>
     </label>
     {translations ? (
       <label>
         <strong>
-          <MdTranslate /> Translated in:{' '}
+          <MdTranslate /> Traducciones en:{' '}
         </strong>
         {translations
           .sort((translationA, translationB) =>
