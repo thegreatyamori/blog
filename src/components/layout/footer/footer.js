@@ -33,15 +33,15 @@ const Footer = () => (
         rel="nofollow noopener noreferrer"
         href={Config.footer.gatsby}
       >
-        Gatbsy.js
+        GatbsyJs
       </a>
       <span>, hosteado en </span>
       <a
         target="_blank"
         rel="nofollow noopener noreferrer"
-        href={Config.footer.gPages}
+        href={Config.footer.zeit}
       >
-        GitHub Pages
+        Zeit
       </a>
     </p>
   </div>

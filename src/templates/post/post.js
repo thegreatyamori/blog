@@ -17,10 +17,12 @@ import style from './post.module.less'
 
 const Post = ({ data, pageContext }) => {
   const { html, frontmatter, timeToRead } = data.markdownRemark
+  const { childImageSharp } = data.avatar
   const { title, date, tags, cover, path, excerpt } = frontmatter
   const translations =
     pageContext.translations.length > 1 ? pageContext.translations : null
   const img = cover.childImageSharp.fluid
+  const avatar = childImageSharp.fluid
   const canonicalUrl = Utils.resolvePageUrl(
     Config.siteUrl,
     Config.pathPrefix,
@@ -61,7 +63,7 @@ const Post = ({ data, pageContext }) => {
             tags={tags}
             coverUrl={coverUrl}
           />
-          <Author />
+          <Author img={avatar} />
         </div>
         <SuggestedPosts posts={suggestedPosts} />
         <Comments pageCanonicalUrl={canonicalUrl} pageId={title} />
@@ -111,6 +113,13 @@ export const pageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    avatar: file(relativePath: { eq: "avatar.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 60) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

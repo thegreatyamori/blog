@@ -7,7 +7,7 @@ module.exports = {
   author: 'thegreatyamori',
   postsForArchivePage: 3,
   defaultLanguage: 'es',
-  disqusScript: 'https://luigi-colella.disqus.com/embed.js',
+  disqusScript: 'https://yamori.disqus.com/embed.js',
   pages: {
     home: '/',
     blog: 'blog',
@@ -27,7 +27,7 @@ module.exports = {
       web: '',
     },
     gatsby: 'https://www.gatsbyjs.org/',
-    gPages: 'https://pages.github.com/',
+    zeit: 'https://zeit.co/',
   },
   tags: {
     angular: {
@@ -72,5 +72,34 @@ module.exports = {
       description:
         'Vue.js es un marco de trabajo de JavaScript para construir aplicaciones web interactivas.',
     },
+    svg: {
+      name: 'SVG',
+      description:
+        'SVG es un formato de gráficos libre de regalías ampliamente implementado, desarrollado y mantenido por el Grupo de Trabajo W3C SVG.',
+    },
   },
+  experiencie: [
+    {
+      initDate: '01/2017',
+      finishDate: '11/2017',
+      position: 'Desarrollador front-end',
+      company: 'T.O.D',
+      description: 'Trabajo remoto',
+    },
+    {
+      initDate: '04/2018',
+      finishDate: '06/2018',
+      position: 'Pasante',
+      company: 'LojaSoft Solutions',
+      description:
+        'GenusBot for Facebook, basado en el sistema Genus Académico',
+    },
+    {
+      initDate: '09/2019',
+      finishDate: '01/2020',
+      position: 'Desarrollador',
+      company: "TIC's ESPEL",
+      description: 'Sistema de Gestión de laboratorios ESPE-L',
+    },
+  ],
 }

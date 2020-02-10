@@ -8,6 +8,7 @@ import Layout from '../../components/layout'
 import SEO from '../../components/seo'
 import Utils from '../../utils'
 import style from './index.module.less'
+import Config from '../../../config'
 
 export const aboutPropTypes = {
   data: PropTypes.shape({
@@ -16,16 +17,6 @@ export const aboutPropTypes = {
         fluid: PropTypes.object.isRequired,
       }).isRequired,
     }).isRequired,
-    flagIt: PropTypes.shape({
-      childImageSharp: PropTypes.shape({
-        fixed: PropTypes.object.isRequired,
-      }),
-    }),
-    flagEn: PropTypes.shape({
-      childImageSharp: PropTypes.shape({
-        fixed: PropTypes.object.isRequired,
-      }),
-    }),
     skillIcons: PropTypes.object.isRequired,
     toolIcons: PropTypes.object.isRequired,
   }),
@@ -34,8 +25,19 @@ export const aboutPropTypes = {
 class About extends React.Component {
   static propTypes = aboutPropTypes
 
+  compare(a, b) {
+    return a.initDate > b.initDate ? -1 : 1
+  }
+
   render() {
-    let { profilePhoto, flagIt, skillIcons, toolIcons } = this.props.data
+    const experiences = Config.experiencie
+    let {
+      profilePhoto,
+      skillIcons,
+      toolIcons,
+      interestsIcons,
+    } = this.props.data
+
     return (
       <Layout>
         <SEO
@@ -44,36 +46,59 @@ class About extends React.Component {
           path="about"
         />
         <div className={style.container}>
-          <div className={style.photo}>
-            <Img fluid={profilePhoto.childImageSharp.fluid} />
-          </div>
-          <div className={style.content}>
-            <h1>Hi, I'm Luigi!</h1>
-            <h2>Software Developer</h2>
-            <p>Per la versione italiana clicca qui</p>
-            <a href={Utils.resolvePageUrl('../', 'it', 'about')}>
-              <Img
-                fixed={flagIt.childImageSharp.fixed}
-                style={{ display: 'block', margin: 'auto' }}
-              />
-            </a>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-              cursus venenatis arcu, cursus pretium enim lacinia nec. Duis
-              viverra sagittis neque. Fusce non luctus urna. Vivamus suscipit
-              metus ac posuere egestas. Nunc a pulvinar purus. Vivamus nisi mi,
-              fringilla quis lacus et, sagittis mollis massa. Cras tempus massa
-              quis lobortis laoreet. Pellentesque metus odio, sagittis nec
-              venenatis non, maximus congue eros. Suspendisse pellentesque purus
-              sit amet ante commodo, et molestie mauris aliquet. Proin non nibh
-              libero. Fusce at nulla euismod, condimentum augue quis, convallis
-              justo.
-            </p>
-            <br />
-            <h2>Skills</h2>
-            <ImageList edges={skillIcons.edges} />
-            <h2>Tools</h2>
-            <ImageList edges={toolIcons.edges} />
+          <div className={style.profile}>
+            <div className={style.photo}>
+              <Img fluid={profilePhoto.childImageSharp.fluid} />
+            </div>
+            <div className={style.aboutMe}>
+              <h1>Hola, Soy Jerson!</h1>
+              <h2>Estudiante de Ingeniería en Software</h2>
+              <p>
+                En este ultimo año de mi carrera, decidí empezar este blog por
+                dos motivos: compartir los conocimientos que he adquirido a lo
+                largo de mis estudios (les puede servir a ustedes y me sirven de
+                recordatorio) y mejorar mis capacidades de comunicación oral y
+                escrita. Además de la programación, me emociona aprender sobre
+                la cultura de otros paises, siempre hay algo nuevo por conocer.
+              </p>
+            </div>
+
+            <div className={style.title}>
+              <h2>Experiencia</h2>
+            </div>
+            <div className={style.content}>
+              {experiences
+                .sort((a, b) => this.compare(a, b))
+                .map((exp, index) => (
+                  <div key={index} className={style.itemWrapper}>
+                    <br />
+                    <label>{`${exp.initDate} - ${exp.finishDate}`}</label>
+                    <h4>{exp.position}</h4>
+                    <span>
+                      En <b>{exp.company}</b>
+                    </span>
+                    <p>{exp.description}</p>
+                  </div>
+                ))}
+            </div>
+            <div className={style.title}>
+              <h2>Habilidades</h2>
+            </div>
+            <div className={style.content}>
+              <ImageList edges={skillIcons.edges} />
+            </div>
+            <div className={style.title}>
+              <h2>Herramientas</h2>
+            </div>
+            <div className={style.content}>
+              <ImageList edges={toolIcons.edges} />
+            </div>
+            <div className={style.title}>
+              <h2>Intereses</h2>
+            </div>
+            <div className={style.content}>
+              <ImageList edges={interestsIcons.edges} />
+            </div>
           </div>
         </div>
       </Layout>
@@ -128,13 +153,6 @@ export const query = graphql`
         }
       }
     }
-    flagIt: file(name: { eq: "flag-it" }) {
-      childImageSharp {
-        fixed(width: 50) {
-          ...GatsbyImageSharpFixed_tracedSVG
-        }
-      }
-    }
     skillIcons: allFile(filter: { dir: { regex: "/about/skills$/" } }) {
       edges {
         node {
@@ -159,16 +177,32 @@ export const query = graphql`
         }
       }
     }
+    interestsIcons: allFile(filter: { dir: { regex: "/about/interests$/" } }) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fixed(width: 50) {
+              ...GatsbyImageSharpFixed_tracedSVG
+            }
+          }
+        }
+      }
+    }
   }
 `
 // Use to set specific icons names
 export const iconsNameMap = {
   css: 'CSS',
   html: 'HTML',
-  jquery: 'JQuery',
   nodejs: 'Node.js',
-  vuejs: 'Vue.js',
   gruntjs: 'Grunt.js',
+  rxjs: 'RxJS',
+  vscode: 'VS Code',
+  mysql: 'MySQL',
+  react: 'ReactJS',
+  graphql: 'GraphQL',
+  mongo: 'mongoDB',
 }
 
 export default About

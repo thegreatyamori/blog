@@ -14,6 +14,7 @@ const Tag = ({ data }) => {
   const rawTags = data.allMarkdownRemark.edges
     .map(edge => edge.node.frontmatter.tags)
     .reduce((prev, curr) => prev.concat(curr))
+
   const tags = rawTags
     .filter((tag, index) => index === rawTags.indexOf(tag))
     .sort() // Remove duplicates and sort values

@@ -1,4 +1,27 @@
-.rounded-circle {
-  width: 200px;
-  height: 200px;
+@import (reference) '../../../style/index.less';
+
+.container {
+  display: flex;
+  align-items: center;
+
+  @media @mobile {
+    flex-direction: column;
+  }
+}
+
+.avatar {
+  width: 10%;
+  padding: 0 10px;
+
+  @media @mobile, @tablet {
+    width: 20%;
+  }
+}
+
+.rounded {
+  border-radius: 50%;
+}
+
+.description {
+  margin: 0;
 }
