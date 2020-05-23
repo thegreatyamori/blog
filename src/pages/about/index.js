@@ -59,8 +59,12 @@ class About extends React.Component {
                 largo de mis estudios (les puede servir a ustedes y me sirven de
                 recordatorio) y mejorar mis capacidades de comunicación oral y
                 escrita. Además de la programación, me encanta la música, así
-                que me propuse aprender guitarra 🎸 (creo que voy bien!). Tambien me gusta aprender sobre la
-                cultura de otros paises y darme cuenta que nadie es perfecto.
+                que me propuse aprender guitarra 
+                <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                  🎸
+                </span>
+                (creo que voy bien!). Tambien me gusta aprender sobre la cultura
+                de otros paises y darme cuenta que nadie es perfecto.
               </p>
             </div>
 

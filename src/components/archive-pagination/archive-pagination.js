@@ -16,7 +16,7 @@ const ArchivePagination = ({ prevPage, nextPage }) => (
         buttonStyle={style.buttonLeft}
       >
         <FaArrowLeft />
-        <span>Newer posts</span>
+        <span>Entradas más nuevas</span>
       </Button>
     ) : null}
     {nextPage ? (
@@ -24,7 +24,7 @@ const ArchivePagination = ({ prevPage, nextPage }) => (
         to={Utils.resolvePageUrl(Config.pages.archive, nextPage)}
         buttonStyle={style.buttonRight}
       >
-        <span>Older posts</span>
+        <span>Entradas más antiguas</span>
         <FaArrowRight />
       </Button>
     ) : null}
