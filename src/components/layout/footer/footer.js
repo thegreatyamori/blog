@@ -41,7 +41,7 @@ const Footer = () => (
         rel="nofollow noopener noreferrer"
         href={Config.footer.zeit}
       >
-        Zeit
+        Vercel
       </a>
     </p>
   </div>

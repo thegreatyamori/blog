@@ -17,8 +17,8 @@ module.exports = {
   },
   social: {
     github: 'https://github.com/thegreatyamori',
-    linkedin: 'https://www.linkedin.com/in/jerson-morocho-0b9ab3161/',
-    instagram: 'https://www.instagram.com/jersonaleksander/',
+    linkedin: 'https://www.linkedin.com/in/thegreatyamori/',
+    instagram: 'https://www.instagram.com/thegreatyamori/',
   },
   footer: {
     jsEcuador: {
@@ -27,7 +27,7 @@ module.exports = {
       web: '',
     },
     gatsby: 'https://www.gatsbyjs.org/',
-    zeit: 'https://zeit.co/',
+    zeit: 'https://vercel.com/',
   },
   tags: {
     angular: {
@@ -77,8 +77,23 @@ module.exports = {
       description:
         'SVG es un formato de gráficos libre de regalías ampliamente implementado, desarrollado y mantenido por el Grupo de Trabajo W3C SVG.',
     },
+    primer_parcial: {
+      name: 'Primer Parcial',
+      description:
+        'Primer parcial de la asignatura de Gestión de la Calidad y Productividad.',
+    },
+    segundo_parcial: {
+      name: 'Segundo Parcial',
+      description:
+        'Segundo parcial de la asignatura de Gestión de la Calidad y Productividad.',
+    },
+    tercer_parcial: {
+      name: 'Tercer Parcial',
+      description:
+        'Tercer parcial de la asignatura de Gestión de la Calidad y Productividad.',
+    },
   },
-  experiencie: [
+  experience: [
     {
       initDate: '01/2017',
       finishDate: '11/2017',

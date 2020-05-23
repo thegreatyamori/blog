@@ -30,7 +30,7 @@ class About extends React.Component {
   }
 
   render() {
-    const experiences = Config.experiencie
+    const experiences = Config.experience
     let {
       profilePhoto,
       skillIcons,
@@ -58,8 +58,9 @@ class About extends React.Component {
                 dos motivos: compartir los conocimientos que he adquirido a lo
                 largo de mis estudios (les puede servir a ustedes y me sirven de
                 recordatorio) y mejorar mis capacidades de comunicación oral y
-                escrita. Además de la programación, me emociona aprender sobre
-                la cultura de otros paises, siempre hay algo nuevo por conocer.
+                escrita. Además de la programación, me encanta la música, así
+                que me propuse aprender guitarra 🎸 (creo que voy bien!). Tambien me gusta aprender sobre la
+                cultura de otros paises y darme cuenta que nadie es perfecto.
               </p>
             </div>
 
