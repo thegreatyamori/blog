@@ -77,18 +77,18 @@ module.exports = {
       description:
         'SVG es un formato de gráficos libre de regalías ampliamente implementado, desarrollado y mantenido por el Grupo de Trabajo W3C SVG.',
     },
-    primer_parcial: {
-      name: 'Primer Parcial',
+    unidad_uno: {
+      name: 'Unidad 1',
       description:
         'Primer parcial de la asignatura de Gestión de la Calidad y Productividad.',
     },
-    segundo_parcial: {
-      name: 'Segundo Parcial',
+    unidad_dos: {
+      name: 'Unidad 2',
       description:
         'Segundo parcial de la asignatura de Gestión de la Calidad y Productividad.',
     },
-    tercer_parcial: {
-      name: 'Tercer Parcial',
+    unidad_tres: {
+      name: 'Unidad 3',
       description:
         'Tercer parcial de la asignatura de Gestión de la Calidad y Productividad.',
     },

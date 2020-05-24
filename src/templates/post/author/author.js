@@ -12,8 +12,8 @@ const Author = ({ img }) => (
     </div>
     <p className={style.description}>
       <b>jerson alexander</b> es estudiante de Ingenieria en Software en
-      Ecuador, disfruta mucho de la auto-educación, programación, libros, manga, arte y cultura
-      general, además es fiel seguidor de Jesucristo. Actualmente es miembro en la comunidad de&nbsp;
+      Ecuador, disfruta mucho de la auto-educación, programación, música, libros, manga, arte y cultura
+      general, además es seguidor de Jesucristo y lector de la biblia. Actualmente es miembro en la comunidad de&nbsp;
       <a
         href={Config.footer.jsEcuador.telegram}
         target="_blank"

@@ -54,13 +54,18 @@ class About extends React.Component {
               <h1>Hola, Soy Jerson!</h1>
               <h2>Estudiante de Ingeniería en Software</h2>
               <p>
-                En este ultimo año de mi carrera, decidí empezar este blog por
+                En este último año de mi carrera, decidí empezar este blog por
                 dos motivos: compartir los conocimientos que he adquirido a lo
                 largo de mis estudios (les puede servir a ustedes y me sirven de
                 recordatorio) y mejorar mis capacidades de comunicación oral y
                 escrita. Además de la programación, me encanta la música, así
-                que me propuse aprender guitarra 🎸 (creo que voy bien!). Tambien me gusta aprender sobre la
-                cultura de otros paises y darme cuenta que nadie es perfecto.
+                que me propuse aprender guitarra 
+                <span role="img" aria-label="jsx-a11y/accessible-emoji">
+                  🎸
+                </span>
+                (creo que voy bien !). Creo que aprender sobre la diversidad de 
+                las culturas alrededor del planeta reafirma mi convicción sobre la 
+                imperfección del ser humano.
               </p>
             </div>
 
