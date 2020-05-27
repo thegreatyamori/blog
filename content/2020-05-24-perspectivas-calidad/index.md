@@ -9,9 +9,6 @@ excerpt: Bases para la gestión de la Calidad
 La calidad se percibe como un concepto subjetivo; es decir que se existen diferentes puntos de vista, estas apreciaciones presentan una característica compleja que es la combinación y unificación de todas las percepciones. Dicha combinación se plasma en forma de normativas (estándares) y en la toma de decisiones (por parte de los consumidores).
 En este post analizaremos el caso de Rolex y su éxito en el mercado de los relojes.
 
-fig 1. Logo rolex recuperado de: https://www.pinterest.com/pin/572801646326225471/
-
-
 > Antes de ir al caso práctico, repasemos algo de teoría. A todos nos gusta la teoría no?
 
 ### Perspectivas de la Calidad
