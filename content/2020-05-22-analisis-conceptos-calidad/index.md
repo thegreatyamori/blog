@@ -2,7 +2,7 @@
 title: Análisis comparativo de los conceptos de calidad.
 date: 2020-05-22
 tags: [unidad_uno]
-path: blog/prueba-1
+path: blog/analisis-conceptos-calidad
 cover: ./preview.jpg
 excerpt: Bases para la gestión de la Calidad
 ---
@@ -79,7 +79,7 @@ Una de las grandes ventajas de Microsoft es su apuesta por la informática en la
 
 Ahora bien, una de las claves del éxito de Microsoft es la **retroalimentación** por parte de la comunidad, que se ha transformado en muchos proyectos de código abierto y mejoras (propuestas por los usuarios) en sus productos/servicios privativos. Esto eleva la calidad de la empresa a otro nivel; ya que el enfoque de su producción se centra en ofrecer una mejor experiencia al usuario. **Todos queremos ser tratados bien, no?**
 
-### Conclusiones
+### ¿Qué podemos comcluir?
 
 Existen diversos aspectos para cuantificar la calidad tanto de procesos como de productos dentro de una organización. En un mundo globalizado los retos así como la competencia en el mercado cada vez son mayores, lo que permite desafiar la alta competencia, tanto nivel nacional como internacional.
 
