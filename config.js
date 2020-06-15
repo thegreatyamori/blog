@@ -92,6 +92,16 @@ module.exports = {
       description:
         'Tercer parcial de la asignatura de Gestión de la Calidad y Productividad.',
     },
+    html: {
+      name: 'HTML5',
+      description:
+        'Es un lenguaje de marcado que se utiliza para el desarrollo de páginas de Internet. Se trata de la siglas que corresponden a HyperText Markup Language, es decir, Lenguaje de Marcas de Hipertexto”.',
+    },
+    css: {
+      name: 'CSS3',
+      description:
+        'es la última evolución del lenguaje de las Hojas de Estilo en Cascada (Cascading Style Sheets), y pretende ampliar la versión CSS2.',
+    },
   },
   experience: [
     {
