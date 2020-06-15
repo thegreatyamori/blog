@@ -59,8 +59,7 @@ ArticleHeading.propTypes = {
 // Languages code ISO 639-1 map
 const hreflangMap = {
   en: 'English',
-  it: 'Italian',
-  fr: 'French',
+  es: 'Spanish',
 }
 
 export default ArticleHeading
