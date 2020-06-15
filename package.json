@@ -7,12 +7,13 @@
     "gatsby": "^2.22.9",
     "gatsby-image": "^2.4.5",
     "gatsby-plugin-feed": "^2.5.3",
+    "gatsby-plugin-google-analytics": "^2.3.4",
     "gatsby-plugin-i18n": "^1.0.1",
     "gatsby-plugin-less": "^3.2.2",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-offline": "^3.2.7",
     "gatsby-plugin-react-helmet": "^3.3.2",
-    "gatsby-plugin-robots-txt": "^1.5.0",
+    "gatsby-plugin-robots-txt": "^1.5.1",
     "gatsby-plugin-sharp": "^2.6.9",
     "gatsby-plugin-sitemap": "^2.4.3",
     "gatsby-remark-images": "^3.3.8",
@@ -43,7 +44,6 @@
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
   },
   "devDependencies": {
-    "gh-pages": "^2.2.0",
     "prettier": "^2.0.5"
   }
 }
