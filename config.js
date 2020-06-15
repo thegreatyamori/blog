@@ -1,7 +1,7 @@
 
 module.exports = {
   pathPrefix: '/blog',
-  siteUrl: 'https://lgcolella.github.io',
+  siteUrl: 'https://jersonalexander.now.sh',
   siteTitle: 'jerson alexander',
   siteDescription: 'desarrollador front-end y un poco más...',
   author: 'thegreatyamori',
