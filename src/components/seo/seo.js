@@ -38,7 +38,6 @@ function SEO({
 
         return (
           <Helmet
-            
             title={title} // Page title
             titleTemplate={`%s | ${Config.siteTitle}`}
             meta={

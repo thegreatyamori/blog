@@ -1,6 +1,6 @@
 
 module.exports = {
-  pathPrefix: '/blog',
+  pathPrefix: '',
   siteUrl: 'https://jersonalexander.now.sh',
   siteTitle: 'jerson alexander',
   siteDescription: 'desarrollador front-end y un poco más...',
