@@ -27,12 +27,12 @@ Tengo experiencia usando Bootstrap desde su versión 3, poco antes de que lanzar
 
 ![](vaquero.jpg)
 
-Una de las mejores novedades, se terminó la dependencia de jQuery.
+En esta versión se despide uno de nuestros vaqueros, Mark Otto uno de los creadores del framework explicaba que estaban agradecidos por el soporte que se le dió a jQuery durante todos estos años.
 
 Todo el código JavaScript ha sido reescrito desde cero con vanilla. Teniendo como resultado un código totalmente limpio y funcional en cualquiera de los navegadores actuales (**al ser una versión alpha, hay bugs aún por identificar**).
 
 jQuery fue la herramienta por excelencia para manipular el DOM durante muchos años y el hecho de que Bootstrap dependiera de ella le estaba limitando las posibilidades de utilizar las caracteristicas que se han implementado en JavaScript en los últimos años.
-Cualquier proyecto que se construya desde la v5 en adelante gozará de una mayor ligereza tanto en el peso de los archivos como en la carga del sitio.
+Cualquier proyecto que se construya desde la v5 en adelante gozará de una mayor ligereza tanto en el peso de los archivos como en la carga del sitio. Además ahora si se podrá integrar 100x100 en los distintos marcos de trabajo front-end (Angular, React, Vue, Svelte, ...).
 
 > Enhorabuena por el rumbo que esta tomando este proyecto !
 
@@ -65,10 +65,9 @@ De esta manera podemos encontrar más facilmente elementos que necesitamos para 
 
 #### Iconos ! Más iconos! NO. Bootstrap Icons 🎉
 
-En un primer vistazo a la versión ```v5.0.0-alpha1```, el equipo de Bootstrap
-nos presenta su paquete de iconos propios [Bootstrap Icons](https://icons.getbootstrap.com/).
+El equipo de Bootstrap nos presenta su paquete de iconos propios [Bootstrap Icons](https://icons.getbootstrap.com/).
 
-![El nuevo color picker si le hace justicia](icons.png)
+![](icons.png)
 
 Anteriormente, Bootstrap recomendaba muchas **icon libraries** que podías añadir con facilidad al proyecto (Material Icons, Fonts Awesome, ...) y eran altamente compatibles.
 
@@ -117,6 +116,10 @@ Yo he trabajado con [Now UI PRO](https://themes.getbootstrap.com/product/now-ui-
 - Un próximo alpha en 3 - 4 semanas aproximadamente.
 
 Por el momento, en esta versión alpha podemos experimentar y si encontramos errores podemos reportarlos en GitHub.
+
+Te dejó los enlaces al proyecto y al sitio web acá 👇👇
+
+[Sitio Web](http://v5.getbootstrap.com/) - [GitHub](https://github.com/twbs/bootstrap)
 
 Gracias por tomarte el tiempo de leer hasta el final, estaré por aquí en un par de dias.
 
