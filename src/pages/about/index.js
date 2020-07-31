@@ -59,13 +59,12 @@ class About extends React.Component {
                 largo de mis estudios (les puede servir a ustedes y me sirven de
                 recordatorio) y mejorar mis capacidades de comunicación oral y
                 escrita. Además de la programación, me encanta la música, así
-                que me propuse aprender guitarra 
+                que me propuse aprender guitarra &nbsp;
                 <span role="img" aria-label="jsx-a11y/accessible-emoji">
                   🎸
                 </span>
-                (creo que voy bien !). Creo que aprender sobre la diversidad de 
-                las culturas alrededor del planeta reafirma mi convicción sobre la 
-                imperfección del ser humano.
+                . Mientras aprendo sobre la diversidad de las culturas alrededor
+                del planeta, me voy dando cuenta que somos imperfectos, sin importar que tan buenos seamos.
               </p>
             </div>
 
@@ -202,9 +201,9 @@ export const iconsNameMap = {
   css: 'CSS',
   html: 'HTML',
   nodejs: 'Node.js',
-  gruntjs: 'Grunt.js',
   rxjs: 'RxJS',
   vscode: 'VS Code',
+  vue: 'Vue.js',
   mysql: 'MySQL',
   react: 'ReactJS',
   graphql: 'GraphQL',
