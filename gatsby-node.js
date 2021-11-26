@@ -4,7 +4,7 @@ const path = require('path')
 const config = require('./config')
 const utils = require('./src/utils')
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
@@ -28,8 +28,7 @@ exports.createPages = ({ actions, graphql }) => {
 
     /* Post pages */
     allMarkdownRemark.edges.forEach(({ node }) => {
-      // Check path prefix of post
-      if (node.frontmatter.path.indexOf(config.pages.blog) !== 0)
+      if (node.frontmatter.path.indexOf(config.pages.blog) !== 0) // Check path prefix of post
         throw `Invalid path prefix: ${node.frontmatter.path}`
 
       createPage({

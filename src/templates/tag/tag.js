@@ -1,13 +1,13 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql, withPrefix } from 'gatsby'
+import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
 import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Seo from '../../components/seo'
 import PostList from '../../components/post-list'
-import style from './tag.module.less'
+import * as style from './tag.module.less'
 import Config from '../../../config'
 import Utils from '../../utils'
 
@@ -16,14 +16,13 @@ const TagPage = ({ data, pageContext }) => {
   const tagName = Config.tags[tag].name || Utils.capitalize(tag)
   const tagPagePath = Config.pages.tag
   const tagImage = data.allFile.edges.find(edge => edge.node.name === tag).node
-    .childImageSharp.fluid
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={tagName}
         description={`All post about ${tagName}`}
-        path={Utils.resolvePageUrl(tagPagePath, tag)}
+        path={withPrefix(Utils.resolvePageUrl(tagPagePath, tag))}
         keywords={[tagName]}
       />
       <div className={style.heading}>
@@ -31,7 +30,7 @@ const TagPage = ({ data, pageContext }) => {
           <h1>{tagName}</h1>
         </div>
         <div className={style.cover}>
-          <Img fluid={tagImage} />
+          <GatsbyImage image={tagImage.childImageSharp.gatsbyImageData} alt={tagImage.base} />
         </div>
       </div>
       <PostList posts={data.allMarkdownRemark.edges} />
@@ -50,7 +49,7 @@ TagPage.propTypes = {
           node: PropTypes.shape({
             name: PropTypes.string.isRequired,
             childImageSharp: PropTypes.shape({
-              fluid: PropTypes.object.isRequired,
+              gatsbyImageData: PropTypes.object.isRequired,
             }).isRequired,
           }).isRequired,
         })
@@ -81,9 +80,7 @@ export const pageQuery = graphql`
             excerpt
             cover {
               childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
               }
             }
           }
@@ -94,10 +91,9 @@ export const pageQuery = graphql`
       edges {
         node {
           name
+          base
           childImageSharp {
-            fluid(maxHeight: 200) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(layout: CONSTRAINED, height: 200, placeholder: TRACED_SVG)
           }
         }
       }
