@@ -1,19 +1,19 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
-import Image from 'gatsby-image'
+import { graphql, withPrefix } from 'gatsby'
+import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
-import style from './404.module.less'
+import * as style from './404.module.less'
 import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Seo from '../../components/seo'
 import Button from '../../components/button'
 import Config from '../../../config'
 import Utils from '../../utils'
 
 const NotFoundPage = ({ data }) => (
   <Layout>
-    <SEO
+    <Seo
       title="404: Page not found"
       description="404 Page"
       path="404"
@@ -21,12 +21,12 @@ const NotFoundPage = ({ data }) => (
     />
     <div className={style.container}>
       <div className={style.image}>
-        <Image fluid={data.file.childImageSharp.fluid} />
+        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="404" />
       </div>
       <div className={style.message}>
-        <h1>Page not found</h1>
-        <Button to={Utils.resolvePageUrl(Config.pages.home)}>
-          Return to homepage
+        <h1>Página no encontrada</h1>
+        <Button to={withPrefix(Utils.resolvePageUrl(Config.pages.home))}>
+          Regresa al Inicio
         </Button>
       </div>
     </div>
@@ -37,7 +37,7 @@ NotFoundPage.propTypes = {
   data: PropTypes.shape({
     file: PropTypes.shape({
       childImageSharp: PropTypes.shape({
-        fluid: PropTypes.object.isRequired,
+        gatsbyImageData: PropTypes.object.isRequired,
       }).isRequired,
     }).isRequired,
   }).isRequired,
@@ -47,9 +47,7 @@ export const query = graphql`
   {
     file(base: { eq: "404.png" }) {
       childImageSharp {
-        fluid(maxWidth: 400) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 400, placeholder: TRACED_SVG)
       }
     }
   }

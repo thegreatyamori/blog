@@ -1,8 +1,8 @@
 /* Vendor imports */
 import React from 'react'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 
-import style from './author.module.less'
+import * as style from './author.module.less'
 import Config from '../../../../config'
 
 const jsEcuador = <a
@@ -16,7 +16,7 @@ const jsEcuador = <a
 const Author = ({ img }) => (
   <div className={style.container}>
     <div className={style.avatar}>
-      <Img fluid={img} className={style.rounded} title="Jerson" alt="Jerson" />
+      <GatsbyImage image={img} className={style.rounded} title="Jerson" alt="Jerson" />
     </div>
     <p className={style.description}>
       <b>Sobre mí</b> Soy Ingeniero de Software en ioet, Inc. Disfruto mucho de

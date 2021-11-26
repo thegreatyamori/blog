@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
 /* App imports */
 import useEvent from '../../hooks/useEvent'
-import style from './header.module.less'
+import * as style from './header.module.less'
 import Config from '../../../../config'
 import Utils from '../../../utils'
 
@@ -32,7 +32,7 @@ const Header = () => {
     >
       <div className={style.titleContainer}>
         <div className={style.title}>
-          <Link to={Utils.resolvePageUrl(Config.pages.home)}>
+          <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.home))}>
             <h4>{Config.siteTitle}</h4>
             <p
               className={
@@ -61,13 +61,13 @@ const Header = () => {
       >
         <ul>
           <li>
-            <Link to={Utils.resolvePageUrl(Config.pages.home)}>Inicio</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.home))}>Inicio</Link>
           </li>
           <li>
-            <Link to={Utils.resolvePageUrl(Config.pages.tag)}>Tags</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.tag))}>Tags</Link>
           </li>
           <li>
-            <Link to={Utils.resolvePageUrl(Config.pages.about)}>Sobre mí</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.about))}>Sobre mí</Link>
           </li>
         </ul>
         <ul>

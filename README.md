@@ -112,14 +112,3 @@ Themes available with this starter are in ```src/style/themes```, but you can al
 
 * 404 page's image by [Freepik](https://www.freepik.com/free-vector/404-error-web-template-with-bored-cat_2234126.htm)
 * Flag icons by [Freepik](https://www.flaticon.com/packs/countrys-flags)
-
-## 🤝 How to contribute
-
-Everyone can contribute to enhance this starter! Here a not-exhaustive list of how to do.
-
-- If you are a *developer* you can improve the code.
-- If you are a *designer* you can propose new themes or enhance the UX.
-- If you are a *blogger* you can propose new features that you would have.
-- If you are a *user* you can improve the guide or give me a feedback.
-
-Even the smallest help is precious and matters to improve this project!

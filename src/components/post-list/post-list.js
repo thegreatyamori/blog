@@ -1,12 +1,12 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { Link, withPrefix } from 'gatsby'
+import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
-import style from './post-list.module.less'
 import TagList from '../tag-list'
 import Utils from '../../utils'
+import * as style from './post-list.module.less'
 
 const PostList = ({ posts }) => (
   <div className={style.container}>
@@ -15,16 +15,16 @@ const PostList = ({ posts }) => (
       return (
         <div key={title} className={style.post}>
           <div className={style.cover}>
-            <Link to={Utils.resolvePageUrl(path)}>
-              <Img
-                fluid={cover.childImageSharp.fluid}
+            <Link to={withPrefix(Utils.resolvePageUrl(path))}>
+              <GatsbyImage
+                image={cover.childImageSharp.gatsbyImageData}
                 title={excerpt}
                 alt={title}
               />
             </Link>
           </div>
           <div className={style.content}>
-            <Link to={Utils.resolvePageUrl(path)}>
+            <Link to={withPrefix(Utils.resolvePageUrl(path))}>
               {date ? <label>{date}</label> : null}
               <h2>{title}</h2>
               <p>{excerpt}</p>
@@ -48,7 +48,7 @@ PostList.propTypes = {
           tags: PropTypes.arrayOf(PropTypes.string).isRequired,
           cover: PropTypes.shape({
             childImageSharp: PropTypes.shape({
-              fluid: PropTypes.object.isRequired,
+              gatsbyImageData: PropTypes.object.isRequired,
             }).isRequired,
           }).isRequired,
         }),
