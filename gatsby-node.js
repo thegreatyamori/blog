@@ -90,3 +90,15 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   })
 }
+
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@scomponents': path.resolve(__dirname, 'src/style/components'),
+        '@stemplates': path.resolve(__dirname, 'src/style/templates'),
+        '@spages': path.resolve(__dirname, 'src/style/pages'),
+      },
+    },
+  })
+}

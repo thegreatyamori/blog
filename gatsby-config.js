@@ -10,7 +10,7 @@ module.exports = {
     description: config.siteDescription
   },
   plugins: [
-    // "gatsby-plugin-sass",
+    "gatsby-plugin-sass",
     'gatsby-plugin-less',
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
