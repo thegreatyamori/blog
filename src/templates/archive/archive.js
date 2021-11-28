@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 /* App imports */
 import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Seo from '../../components/seo'
 import PostList from '../../components/post-list'
 import ArchivePagination from '../../components/archive-pagination'
 import Config from '../../../config'
@@ -16,7 +16,7 @@ const Archive = ({ data, pageContext }) => {
 
   return (
     <Layout title="Archive">
-      <SEO
+      <Seo
         title={`Archive | Page ${archivePage}`}
         description="Old posts"
         path={Config.pages.archive}
@@ -58,9 +58,7 @@ export const query = graphql`
             excerpt
             cover {
               childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
               }
             }
           }

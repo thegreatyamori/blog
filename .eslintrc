@@ -1,0 +1,11 @@
+{
+  "settings": {
+    "import/resolver": {
+      "alias": [
+        ["@scomponents", "./src/style/components"],
+        ["@stemplates", "./src/style/templates"],
+        ["@spages", "./src/style/pages"],
+      ]
+    }
+  }
+}

@@ -46,10 +46,6 @@
   h2 {
     font-family: 'CustomBoldFont', sans-serif;
   }
-  h2,
-  p {
-    padding-left: @padding-medium;
-  }
   @media @mobile {
     width: 100%;
     h1,
@@ -83,14 +79,14 @@
 
     &::before {
       position: relative;
-      top: 0;
-      left: -34px;
+      top: 53px;
+      left: -33px;
       content: '🔵';
     }
 
-    // &:first-child::before {
-    //   content: '🔘';
-    // }
+    &:first-child::before {
+      content: '🔘';
+    }
 
     h4 {
       margin: @margin-zero;

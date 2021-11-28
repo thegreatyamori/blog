@@ -1,9 +1,9 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import { Link, withPrefix } from 'gatsby'
 /* App imports */
-import style from './tag-list.module.less'
+import * as style from './tag-list.module.less'
 import Config from '../../../config'
 import Utils from '../../utils'
 
@@ -13,7 +13,7 @@ const TagList = ({ tags }) => (
       .filter((tag, index) => index === tags.indexOf(tag)) // Remove duplicate values
       .sort()
       .map(tag => (
-        <Link to={Utils.resolvePageUrl(Config.pages.tag, tag)} key={tag}>
+        <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.tag, tag))} key={tag}>
           {Config.tags[tag].name || Utils.capitalize(tag)}
         </Link>
       ))}

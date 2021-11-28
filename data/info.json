@@ -1,0 +1,14 @@
+{
+  "jsEcuador": {
+    "telegram": "https://t.me/javascriptecuador",
+    "twitter": "https://twitter.com/jsecuador_",
+    "web": ""
+  },
+  "gatsby": "https://www.gatsbyjs.org/",
+  "vercel": "https://vercel.com/",
+  "networks": {
+    "github": "https://github.com/thegreatyamori",
+    "linkedin": "https://www.linkedin.com/in/thegreatyamori/",
+    "instagram": "https://www.instagram.com/thegreatyamori/"
+  }
+}
