@@ -4,7 +4,7 @@ const path = require('path')
 const config = require('./config')
 const utils = require('./src/utils')
 
-exports.createPages = async ({ actions, graphql }) => {
+exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
 
   return graphql(`
@@ -28,7 +28,8 @@ exports.createPages = async ({ actions, graphql }) => {
 
     /* Post pages */
     allMarkdownRemark.edges.forEach(({ node }) => {
-      if (node.frontmatter.path.indexOf(config.pages.blog) !== 0) // Check path prefix of post
+      // Check path prefix of post
+      if (node.frontmatter.path.indexOf(config.pages.blog) !== 0)
         throw `Invalid path prefix: ${node.frontmatter.path}`
 
       createPage({
@@ -88,17 +89,5 @@ exports.createPages = async ({ actions, graphql }) => {
         },
       })
     }
-  })
-}
-
-exports.onCreateWebpackConfig = ({ actions }) => {
-  actions.setWebpackConfig({
-    resolve: {
-      alias: {
-        '@scomponents': path.resolve(__dirname, 'src/style/components'),
-        '@stemplates': path.resolve(__dirname, 'src/style/templates'),
-        '@spages': path.resolve(__dirname, 'src/style/pages'),
-      },
-    },
   })
 }

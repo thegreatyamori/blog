@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 /* App imports */
 import Layout from '../components/layout'
-import Seo from '../components/seo'
+import SEO from '../components/seo'
 import PostList from '../components/post-list'
 import ArchivePagination from '../components/archive-pagination'
 import Config from '../../config'
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Seo title="Home" description={Config.siteDescription} path="" />
+    <SEO title="Home" description={Config.siteDescription} path="" />
     <PostList posts={data.allMarkdownRemark.edges} />
     <ArchivePagination nextPage={2} />
   </Layout>
@@ -40,7 +40,9 @@ export const query = graphql`
             excerpt
             cover {
               childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
               }
             }
           }

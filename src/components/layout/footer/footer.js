@@ -3,7 +3,7 @@ import React from 'react'
 import { FaTelegramPlane, FaTwitter } from 'react-icons/fa'
 
 /* App imports */
-import * as style from './footer.module.less'
+import style from './footer.module.less'
 import Config from '../../../../config'
 
 const Footer = () => (

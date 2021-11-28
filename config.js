@@ -102,5 +102,29 @@ module.exports = {
       description:
         'es la última evolución del lenguaje de las Hojas de Estilo en Cascada (Cascading Style Sheets), y pretende ampliar la versión CSS2.',
     },
-  }
+  },
+  experience: [
+    {
+      initDate: '01/2017',
+      finishDate: '11/2017',
+      position: 'Desarrollador front-end',
+      company: 'T.O.D',
+      description: 'Trabajo remoto',
+    },
+    {
+      initDate: '04/2018',
+      finishDate: '06/2018',
+      position: 'Pasante',
+      company: 'LojaSoft Solutions',
+      description:
+        'GenusBot for Facebook, basado en el sistema Genus Académico',
+    },
+    {
+      initDate: '09/2019',
+      finishDate: '01/2020',
+      position: 'Desarrollador',
+      company: "TIC's ESPEL",
+      description: 'Sistema de Gestión de laboratorios ESPE-L',
+    },
+  ],
 }

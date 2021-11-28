@@ -2,12 +2,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
-import { StaticQuery, graphql, withPrefix } from 'gatsby'
+import { StaticQuery, graphql } from 'gatsby'
 /* App imports */
 import Config from '../../../config'
 import Utils from '../../utils'
 
-function Seo({
+function SEO({
   title,
   description,
   path,
@@ -26,14 +26,14 @@ function Seo({
           keywords && keywords.length > 0
             ? { name: 'keywords', content: keywords.join(', ') }
             : []
-        const pageUrl = withPrefix(Utils.resolvePageUrl(
+        const pageUrl = Utils.resolvePageUrl(
           Config.siteUrl,
           Config.pathPrefix,
           path
-        ))
+        )
         const metaImageUrl = Utils.resolveUrl(
           Config.siteUrl,
-          imageUrl ? imageUrl : data.file.childImageSharp.gatsbyImageData.images.fallback.src
+          imageUrl ? imageUrl : data.file.childImageSharp.fixed.src
         )
 
         return (
@@ -71,14 +71,14 @@ function Seo({
               .concat(
                 translations
                   ? translations.map(obj => ({
-                    rel: 'alternate',
-                    hreflang: obj.hreflang,
-                    href: withPrefix(Utils.resolvePageUrl(
-                      Config.siteUrl,
-                      Config.pathPrefix,
-                      obj.path
-                    )),
-                  }))
+                      rel: 'alternate',
+                      hreflang: obj.hreflang,
+                      href: Utils.resolvePageUrl(
+                        Config.siteUrl,
+                        Config.pathPrefix,
+                        obj.path
+                      ),
+                    }))
                   : []
               )}
           >
@@ -90,7 +90,7 @@ function Seo({
   )
 }
 
-Seo.propTypes = {
+SEO.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
@@ -116,9 +116,11 @@ const detailsQuery = graphql`
   query DefaultSEOQuery {
     file(name: { eq: "facebook-logo" }) {
       childImageSharp {
-        gatsbyImageData(width: 500, layout: FIXED, placeholder: TRACED_SVG)
+        fixed(width: 500) {
+          ...GatsbyImageSharpFixed_noBase64
+        }
       }
     }
   }
 `
-export default Seo
+export default SEO
