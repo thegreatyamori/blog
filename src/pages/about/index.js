@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
+import EmblaCarousel from '../../components/carousel'
 import Utils from '../../utils'
 import * as style from './index.module.less'
 
@@ -80,8 +81,8 @@ class About extends React.Component {
             </div>
             <div className={style.aboutMe}>
               <h1>Hola, Soy Jerson!</h1>
-              <h2>{about.edges[0].node.title}</h2>
-              <p>{about.edges[0].node.summary}</p>
+              {console.log(about.edges.length)}
+              <EmblaCarousel slides={about.edges} />
             </div>
 
             <div className={style.title}>
@@ -155,11 +156,12 @@ class ImageList extends React.Component {
 
 export const query = graphql`
   {
-    about: allAboutJson(limit: 1) {
+    about: allAboutJson(sort: {fields: date, order: DESC}) {
       edges {
         node {
           summary
           title
+          date
         }
       }
     }
