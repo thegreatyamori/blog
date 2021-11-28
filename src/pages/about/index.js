@@ -2,19 +2,32 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
 import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Seo from '../../components/seo'
 import Utils from '../../utils'
-import style from './index.module.less'
-import Config from '../../../config'
+import * as style from './index.module.less'
 
-export const aboutPropTypes = {
+// Use to set specific icons names
+const iconsNameMap = {
+  css: 'CSS',
+  html: 'HTML',
+  nodejs: 'Node.js',
+  rxjs: 'RxJS',
+  vscode: 'VS Code',
+  vue: 'Vue.js',
+  mysql: 'MySQL',
+  react: 'ReactJS',
+  graphql: 'GraphQL',
+  mongo: 'mongoDB',
+}
+
+const aboutPropTypes = {
   data: PropTypes.shape({
     profilePhoto: PropTypes.shape({
       childImageSharp: PropTypes.shape({
-        fluid: PropTypes.object.isRequired,
+        gatsbyImageData: PropTypes.object.isRequired,
       }).isRequired,
     }).isRequired,
     skillIcons: PropTypes.object.isRequired,
@@ -25,13 +38,25 @@ export const aboutPropTypes = {
 class About extends React.Component {
   static propTypes = aboutPropTypes
 
-  compare(a, b) {
-    return a.initDate > b.initDate ? -1 : 1
+  renderExperience(experience) {
+    return experience.edges
+      .map(({ node: work }, index) => (
+        <div key={index} className={style.itemWrapper}>
+          <br />
+          <label>{`${work.initDate} - ${work.finishDate}`}</label>
+          <h4>{work.position}</h4>
+          <span>
+            En <b>{work.company}</b>
+          </span>
+          <p>{work.description}</p>
+        </div>
+      ))
   }
 
   render() {
-    const experiences = Config.experience
     let {
+      about,
+      experience,
       profilePhoto,
       skillIcons,
       toolIcons,
@@ -40,7 +65,7 @@ class About extends React.Component {
 
     return (
       <Layout>
-        <SEO
+        <Seo
           title="About"
           description="A brief summary of this blog"
           path="about"
@@ -48,43 +73,22 @@ class About extends React.Component {
         <div className={style.container}>
           <div className={style.profile}>
             <div className={style.photo}>
-              <Img fluid={profilePhoto.childImageSharp.fluid} />
+              <GatsbyImage
+                image={profilePhoto.childImageSharp.gatsbyImageData}
+                alt="profile-jerson"
+              />
             </div>
             <div className={style.aboutMe}>
               <h1>Hola, Soy Jerson!</h1>
-              <h2>Estudiante de Ingeniería en Software</h2>
-              <p>
-                En este último año de mi carrera, decidí empezar este blog por
-                dos motivos: compartir los conocimientos que he adquirido a lo
-                largo de mis estudios (les puede servir a ustedes y me sirven de
-                recordatorio) y mejorar mis capacidades de comunicación oral y
-                escrita. Además de la programación, me encanta la música, así
-                que me propuse aprender guitarra &nbsp;
-                <span role="img" aria-label="jsx-a11y/accessible-emoji">
-                  🎸
-                </span>
-                . Mientras aprendo sobre la diversidad de las culturas alrededor
-                del planeta, me voy dando cuenta que somos imperfectos, sin importar que tan buenos seamos.
-              </p>
+              <h2>{about.edges[0].node.title}</h2>
+              <p>{about.edges[0].node.summary}</p>
             </div>
 
             <div className={style.title}>
               <h2>Experiencia</h2>
             </div>
             <div className={style.content}>
-              {experiences
-                .sort((a, b) => this.compare(a, b))
-                .map((exp, index) => (
-                  <div key={index} className={style.itemWrapper}>
-                    <br />
-                    <label>{`${exp.initDate} - ${exp.finishDate}`}</label>
-                    <h4>{exp.position}</h4>
-                    <span>
-                      En <b>{exp.company}</b>
-                    </span>
-                    <p>{exp.description}</p>
-                  </div>
-                ))}
+              {this.renderExperience(experience)}
             </div>
             <div className={style.title}>
               <h2>Habilidades</h2>
@@ -111,13 +115,13 @@ class About extends React.Component {
   }
 }
 
-export const imageListPropTypes = {
+const imageListPropTypes = {
   edges: PropTypes.arrayOf(
     PropTypes.shape({
       node: PropTypes.shape({
         name: PropTypes.string.isRequired,
         childImageSharp: PropTypes.shape({
-          fixed: PropTypes.object.isRequired,
+          gatsbyImageData: PropTypes.object.isRequired,
         }).isRequired,
       }).isRequired,
     })
@@ -135,9 +139,9 @@ class ImageList extends React.Component {
         )
         .map(({ node: { name, childImageSharp } }) => (
           <div className={style.iconWrapper} key={name}>
-            <Img
-              fixed={childImageSharp.fixed}
-              alt={name + ' logo'}
+            <GatsbyImage
+              image={childImageSharp.gatsbyImageData}
+              alt={name + '-logo'}
               title={name}
             />
             <label>
@@ -151,11 +155,28 @@ class ImageList extends React.Component {
 
 export const query = graphql`
   {
+    about: allAboutJson(limit: 1) {
+      edges {
+        node {
+          summary
+          title
+        }
+      }
+    }
+    experience: allExperienceJson(limit: 3) {
+      edges {
+        node {
+          description
+          company
+          finishDate
+          initDate
+          position
+        }
+      }
+    }
     profilePhoto: file(name: { eq: "profile-photo" }) {
       childImageSharp {
-        fluid(maxWidth: 800) {
-          ...GatsbyImageSharpFluid_tracedSVG
-        }
+        gatsbyImageData(layout: CONSTRAINED, width: 800)
       }
     }
     skillIcons: allFile(filter: { dir: { regex: "/about/skills$/" } }) {
@@ -163,9 +184,7 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fixed(width: 50) {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
+            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
           }
         }
       }
@@ -175,9 +194,7 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fixed(width: 50) {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
+            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
           }
         }
       }
@@ -187,27 +204,12 @@ export const query = graphql`
         node {
           name
           childImageSharp {
-            fixed(width: 50) {
-              ...GatsbyImageSharpFixed_tracedSVG
-            }
+            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
           }
         }
       }
     }
   }
 `
-// Use to set specific icons names
-export const iconsNameMap = {
-  css: 'CSS',
-  html: 'HTML',
-  nodejs: 'Node.js',
-  rxjs: 'RxJS',
-  vscode: 'VS Code',
-  vue: 'Vue.js',
-  mysql: 'MySQL',
-  react: 'ReactJS',
-  graphql: 'GraphQL',
-  mongo: 'mongoDB',
-}
 
 export default About

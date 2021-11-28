@@ -1,10 +1,10 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import Img from 'gatsby-image'
+import { GatsbyImage } from "gatsby-plugin-image"
 /* App imports */
 import TagList from '../../../components/tag-list'
-import style from './heading.module.less'
+import * as style from './heading.module.less'
 
 const Heading = ({ title, tags, cover, coverTitle }) => (
   <div className={style.header}>
@@ -13,7 +13,7 @@ const Heading = ({ title, tags, cover, coverTitle }) => (
       <TagList tags={tags} />
     </div>
     <div className={style.cover}>
-      <Img fluid={cover} title={coverTitle} alt={title} />
+      <GatsbyImage image={cover} title={coverTitle} alt={title} />
     </div>
   </div>
 )

@@ -3,7 +3,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 /* App imports */
 import Layout from '../../components/layout'
-import SEO from '../../components/seo'
+import Seo from '../../components/seo'
 import Heading from './heading'
 import ArticleHeading from './article-heading'
 import Article from './article'
@@ -13,22 +13,21 @@ import Share from './share'
 import SuggestedPosts from './suggested-posts'
 import Config from '../../../config'
 import Utils from '../../utils'
-import style from './post.module.less'
+import * as style from './post.module.less'
 
 const Post = ({ data, pageContext }) => {
   const { html, frontmatter, timeToRead } = data.markdownRemark
-  const { childImageSharp } = data.avatar
   const { title, date, tags, cover, path, excerpt } = frontmatter
   const translations =
     pageContext.translations.length > 1 ? pageContext.translations : null
-  const img = cover.childImageSharp.fluid
-  const avatar = childImageSharp.fluid
+  const img = cover.childImageSharp.gatsbyImageData
+  const avatar = data.avatar.childImageSharp.gatsbyImageData
   const canonicalUrl = Utils.resolvePageUrl(
     Config.siteUrl,
     Config.pathPrefix,
     path
   )
-  const coverUrl = Utils.resolveUrl(Config.siteUrl, img.src)
+  const coverUrl = Utils.resolveUrl(Config.siteUrl, img.images.fallback.src)
   const suggestedPosts = Utils.getSuggestedPosts(
     data.markdownRemark,
     data.allMarkdownRemark,
@@ -37,7 +36,7 @@ const Post = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={title}
         description={excerpt}
         path={path}
@@ -85,9 +84,7 @@ export const pageQuery = graphql`
         excerpt
         cover {
           childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid_tracedSVG
-            }
+            gatsbyImageData(layout: CONSTRAINED, width: 1000, placeholder: TRACED_SVG)
           }
         }
       }
@@ -107,9 +104,7 @@ export const pageQuery = graphql`
             excerpt
             cover {
               childImageSharp {
-                fluid(maxWidth: 600) {
-                  ...GatsbyImageSharpFluid_tracedSVG
-                }
+                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
               }
             }
           }
@@ -118,9 +113,7 @@ export const pageQuery = graphql`
     }
     avatar: file(relativePath: { eq: "avatar.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 60) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(layout: FIXED, width: 70, placeholder: TRACED_SVG)
       }
     }
   }
