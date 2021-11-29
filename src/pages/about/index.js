@@ -22,6 +22,8 @@ const iconsNameMap = {
   react: 'ReactJS',
   graphql: 'GraphQL',
   mongo: 'mongoDB',
+  postres: 'PostgresSQL',
+  aws_s3: 'AWS S3'
 }
 
 const aboutPropTypes = {
