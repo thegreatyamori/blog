@@ -7,12 +7,13 @@ export const SkillsList = ({ edges }) => {
     .sort(({ node: { name: nameA } }, { node: { name: nameB } }) =>
       nameA.toLowerCase() > nameB.toLowerCase() ? 1 : -1
     )
-    .map(({ node: { name, childImageSharp } }) => (
+    .map(({ node: { id, name, rating, group, image } }) => (
       <Skill
+        key={id}
         name={name}
-        metaImg={childImageSharp}
-        rating={5}
-        category={'interests'}
+        metaImg={image.childImageSharp.gatsbyImageData}
+        rating={rating}
+        category={group}
       />
     ))
 

@@ -17,8 +17,9 @@ const aboutPropTypes = {
         gatsbyImageData: PropTypes.object.isRequired,
       }).isRequired,
     }).isRequired,
-    skillIcons: PropTypes.object.isRequired,
-    toolIcons: PropTypes.object.isRequired,
+    skills: PropTypes.object.isRequired,
+    tools: PropTypes.object.isRequired,
+    interests: PropTypes.object.isRequired,
   }),
 }
 
@@ -44,9 +45,9 @@ class About extends React.Component {
       about,
       experience,
       profilePhoto,
-      skillIcons,
-      toolIcons,
-      interestsIcons,
+      skills,
+      tools,
+      interests,
     } = this.props.data
 
     return (
@@ -66,7 +67,6 @@ class About extends React.Component {
             </div>
             <div className={style.aboutMe}>
               <h1>Hola, Soy Jerson!</h1>
-              {console.log(about.edges.length)}
               <EmblaCarousel slides={about.edges} />
             </div>
 
@@ -80,19 +80,19 @@ class About extends React.Component {
               <h2>Habilidades</h2>
             </div>
             <div className={style.content}>
-              <SkillsList edges={skillIcons.edges} />
+              <SkillsList edges={skills.edges} />
             </div>
             <div className={style.title}>
               <h2>Herramientas</h2>
             </div>
             <div className={style.content}>
-              <SkillsList edges={toolIcons.edges} />
+              <SkillsList edges={tools.edges} />
             </div>
             <div className={style.title}>
               <h2>Intereses</h2>
             </div>
             <div className={style.content}>
-              <SkillsList edges={interestsIcons.edges} />
+              <SkillsList edges={interests.edges} />
             </div>
           </div>
         </div>
@@ -128,32 +128,47 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED, width: 800)
       }
     }
-    skillIcons: allFile(filter: { dir: { regex: "/about/skills$/" } }) {
+    skills: allTechJson(filter: { group: { eq: "skills" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }
     }
-    toolIcons: allFile(filter: { dir: { regex: "/about/tools$/" } }) {
+    tools: allTechJson(filter: { group: { eq: "tools" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }
     }
-    interestsIcons: allFile(filter: { dir: { regex: "/about/interests$/" } }) {
+    interests: allTechJson(filter: { group: { eq: "interests" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }
