@@ -102,24 +102,3 @@
     padding: @padding-zero;
   }
 }
-
-.iconsContainer {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  @media @mobile {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.iconWrapper {
-  .frame-medium();
-  .flex-center();
-  .label-2();
-  justify-content: space-evenly;
-  label {
-    padding-left: @padding-small;
-  }
-  @media @mobile, @tablet {
-    flex-direction: column;
-  }
-}

@@ -2,27 +2,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 /* App imports */
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
 import EmblaCarousel from '../../components/carousel'
-import Utils from '../../utils'
+import SkillsList from '../../components/skill-rating-list'
 import * as style from './index.module.less'
-
-// Use to set specific icons names
-const iconsNameMap = {
-  css: 'CSS',
-  html: 'HTML',
-  nodejs: 'Node.js',
-  rxjs: 'RxJS',
-  vscode: 'VS Code',
-  vue: 'Vue.js',
-  mysql: 'MySQL',
-  react: 'ReactJS',
-  graphql: 'GraphQL',
-  mongo: 'mongoDB',
-}
 
 const aboutPropTypes = {
   data: PropTypes.shape({
@@ -31,8 +17,9 @@ const aboutPropTypes = {
         gatsbyImageData: PropTypes.object.isRequired,
       }).isRequired,
     }).isRequired,
-    skillIcons: PropTypes.object.isRequired,
-    toolIcons: PropTypes.object.isRequired,
+    skills: PropTypes.object.isRequired,
+    tools: PropTypes.object.isRequired,
+    interests: PropTypes.object.isRequired,
   }),
 }
 
@@ -40,18 +27,17 @@ class About extends React.Component {
   static propTypes = aboutPropTypes
 
   renderExperience(experience) {
-    return experience.edges
-      .map(({ node: work }, index) => (
-        <div key={index} className={style.itemWrapper}>
-          <br />
-          <label>{`${work.initDate} - ${work.finishDate}`}</label>
-          <h4>{work.position}</h4>
-          <span>
-            En <b>{work.company}</b>
-          </span>
-          <p>{work.description}</p>
-        </div>
-      ))
+    return experience.edges.map(({ node: work }, index) => (
+      <div key={index} className={style.itemWrapper}>
+        <br />
+        <label>{`${work.initDate} - ${work.finishDate}`}</label>
+        <h4>{work.position}</h4>
+        <span>
+          En <b>{work.company}</b>
+        </span>
+        <p>{work.description}</p>
+      </div>
+    ))
   }
 
   render() {
@@ -59,9 +45,9 @@ class About extends React.Component {
       about,
       experience,
       profilePhoto,
-      skillIcons,
-      toolIcons,
-      interestsIcons,
+      skills,
+      tools,
+      interests,
     } = this.props.data
 
     return (
@@ -81,7 +67,6 @@ class About extends React.Component {
             </div>
             <div className={style.aboutMe}>
               <h1>Hola, Soy Jerson!</h1>
-              {console.log(about.edges.length)}
               <EmblaCarousel slides={about.edges} />
             </div>
 
@@ -95,19 +80,19 @@ class About extends React.Component {
               <h2>Habilidades</h2>
             </div>
             <div className={style.content}>
-              <ImageList edges={skillIcons.edges} />
+              <SkillsList edges={skills.edges} />
             </div>
             <div className={style.title}>
               <h2>Herramientas</h2>
             </div>
             <div className={style.content}>
-              <ImageList edges={toolIcons.edges} />
+              <SkillsList edges={tools.edges} />
             </div>
             <div className={style.title}>
               <h2>Intereses</h2>
             </div>
             <div className={style.content}>
-              <ImageList edges={interestsIcons.edges} />
+              <SkillsList edges={interests.edges} />
             </div>
           </div>
         </div>
@@ -116,47 +101,9 @@ class About extends React.Component {
   }
 }
 
-const imageListPropTypes = {
-  edges: PropTypes.arrayOf(
-    PropTypes.shape({
-      node: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        childImageSharp: PropTypes.shape({
-          gatsbyImageData: PropTypes.object.isRequired,
-        }).isRequired,
-      }).isRequired,
-    })
-  ).isRequired,
-}
-
-class ImageList extends React.Component {
-  static propTypes = imageListPropTypes
-
-  render = () => (
-    <div className={style.iconsContainer}>
-      {this.props.edges
-        .sort((edgeA, edgeB) =>
-          edgeA.node.name.toLowerCase() > edgeB.node.name.toLowerCase() ? 1 : -1
-        )
-        .map(({ node: { name, childImageSharp } }) => (
-          <div className={style.iconWrapper} key={name}>
-            <GatsbyImage
-              image={childImageSharp.gatsbyImageData}
-              alt={name + '-logo'}
-              title={name}
-            />
-            <label>
-              {iconsNameMap[name] ? iconsNameMap[name] : Utils.capitalize(name)}
-            </label>
-          </div>
-        ))}
-    </div>
-  )
-}
-
 export const query = graphql`
   {
-    about: allAboutJson(sort: {fields: date, order: DESC}) {
+    about: allAboutJson(sort: { fields: date, order: DESC }) {
       edges {
         node {
           summary
@@ -181,32 +128,47 @@ export const query = graphql`
         gatsbyImageData(layout: CONSTRAINED, width: 800)
       }
     }
-    skillIcons: allFile(filter: { dir: { regex: "/about/skills$/" } }) {
+    skills: allTechJson(filter: { group: { eq: "skills" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }
     }
-    toolIcons: allFile(filter: { dir: { regex: "/about/tools$/" } }) {
+    tools: allTechJson(filter: { group: { eq: "tools" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }
     }
-    interestsIcons: allFile(filter: { dir: { regex: "/about/interests$/" } }) {
+    interests: allTechJson(filter: { group: { eq: "interests" } }) {
       edges {
         node {
+          id
           name
-          childImageSharp {
-            gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+          rating
+          group
+          image {
+            childImageSharp {
+              gatsbyImageData(width: 40, layout: FIXED, placeholder: TRACED_SVG)
+            }
           }
         }
       }

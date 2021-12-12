@@ -1,0 +1,219 @@
+[
+  {
+    "key": "bash",
+    "name": "Bash",
+    "image": "../src/images/about/interests/bash.png",
+    "rating": 10,
+    "group": "interests"
+  },
+  {
+    "key": "bulma",
+    "name": "Bulma",
+    "image": "../src/images/about/interests/bulma.png",
+    "rating": 5,
+    "group": "interests"
+  },
+  {
+    "key": "flutter",
+    "name": "Flutter",
+    "image": "../src/images/about/interests/flutter.png",
+    "rating": 8,
+    "group": "interests"
+  },
+  {
+    "key": "go",
+    "name": "Go",
+    "image": "../src/images/about/interests/go.png",
+    "rating": 8,
+    "group": "interests"
+  },
+  {
+    "key": "graphql",
+    "name": "GraphQL",
+    "image": "../src/images/about/interests/graphql.png",
+    "rating": 6,
+    "group": "interests"
+  },
+  {
+    "key": "kotlin",
+    "name": "Kotlin",
+    "image": "../src/images/about/interests/kotlin.png",
+    "rating": 6,
+    "group": "interests"
+  },
+  {
+    "key": "mongo",
+    "name": "MongoDB",
+    "image": "../src/images/about/interests/mongo.png",
+    "rating": 6,
+    "group": "interests"
+  },
+  {
+    "key": "nodejs",
+    "name": "NodeJs",
+    "image": "../src/images/about/interests/nodejs.png",
+    "rating": 7,
+    "group": "interests"
+  },
+  {
+    "key": "vue",
+    "name": "Vue",
+    "image": "../src/images/about/interests/vue.png",
+    "rating": 9,
+    "group": "interests"
+  },
+  {
+    "key": "angular",
+    "name": "Angular",
+    "image": "../src/images/about/skills/angular.png",
+    "rating": 8,
+    "group": "skills"
+  },
+  {
+    "key": "aws_s3",
+    "name": "AWS S3",
+    "image": "../src/images/about/skills/aws_s3.png",
+    "rating": 5,
+    "group": "skills"
+  },
+  {
+    "key": "bootstrap",
+    "name": "Bootstrap",
+    "image": "../src/images/about/skills/bootstrap.png",
+    "rating": 8,
+    "group": "skills"
+  },
+  {
+    "key": "css",
+    "name": "CSS",
+    "image": "../src/images/about/skills/css.png",
+    "rating": 8,
+    "group": "skills"
+  },
+  {
+    "key": "docker",
+    "name": "Docker",
+    "image": "../src/images/about/skills/docker.png",
+    "rating": 6,
+    "group": "skills"
+  },
+  {
+    "key": "gatsby",
+    "name": "Gatsby",
+    "image": "../src/images/about/skills/gatsby.png",
+    "rating": 8,
+    "group": "skills"
+  },
+  {
+    "key": "html",
+    "name": "HTML",
+    "image": "../src/images/about/skills/html.png",
+    "rating": 9,
+    "group": "skills"
+  },
+  {
+    "key": "javascript",
+    "name": "JavaScript",
+    "image": "../src/images/about/skills/javascript.png",
+    "rating": 9,
+    "group": "skills"
+  },
+  {
+    "key": "laravel",
+    "name": "Laravel",
+    "image": "../src/images/about/skills/laravel.png",
+    "rating": 8,
+    "group": "skills"
+  },
+  {
+    "key": "mysql",
+    "name": "MySQL",
+    "image": "../src/images/about/skills/mysql.png",
+    "rating": 7,
+    "group": "skills"
+  },
+  {
+    "key": "postgres",
+    "name": "postgres",
+    "image": "../src/images/about/skills/postgres.png",
+    "rating": 6,
+    "group": "skills"
+  },
+  {
+    "key": "python",
+    "name": "Python",
+    "image": "../src/images/about/skills/python.png",
+    "rating": 9,
+    "group": "skills"
+  },
+  {
+    "key": "react",
+    "name": "React",
+    "image": "../src/images/about/skills/react.png",
+    "rating": 7,
+    "group": "skills"
+  },
+  {
+    "key": "rxjs",
+    "name": "RxJs",
+    "image": "../src/images/about/skills/rxjs.png",
+    "rating": 7,
+    "group": "skills"
+  },
+  {
+    "key": "typescript",
+    "name": "TypeScript",
+    "image": "../src/images/about/skills/typescript.png",
+    "rating": 7,
+    "group": "skills"
+  },
+  {
+    "key": "figma",
+    "name": "Figma",
+    "image": "../src/images/about/tools/figma.png",
+    "rating": 10,
+    "group": "tools"
+  },
+  {
+    "key": "git",
+    "name": "Git",
+    "image": "../src/images/about/tools/git.png",
+    "rating": 9,
+    "group": "tools"
+  },
+  {
+    "key": "github",
+    "name": "GitHub",
+    "image": "../src/images/about/tools/github.png",
+    "rating": 9,
+    "group": "tools"
+  },
+  {
+    "key": "less",
+    "name": "Less",
+    "image": "../src/images/about/tools/less.png",
+    "rating": 6,
+    "group": "tools"
+  },
+  {
+    "key": "npm",
+    "name": "NPM",
+    "image": "../src/images/about/tools/npm.png",
+    "rating": 7,
+    "group": "tools"
+  },
+  {
+    "key": "sass",
+    "name": "Sass",
+    "image": "../src/images/about/tools/sass.png",
+    "rating": 9,
+    "group": "tools"
+  },
+  {
+    "key": "vscode",
+    "name": "VScode",
+    "image": "../src/images/about/tools/vscode.png",
+    "rating": 10,
+    "group": "tools"
+  }
+]

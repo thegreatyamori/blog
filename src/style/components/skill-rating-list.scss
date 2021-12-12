@@ -1,0 +1,29 @@
+@import '../media_queries';
+
+$padding-small: 9px;
+
+.skill__container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  
+  @include for_breakpoint(fold) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.skill__item {
+  display: flex;
+  align-items: center;
+  padding: $padding-small $padding-small * 2;
+  justify-content: space-between;
+  
+  label {
+    padding-left: $padding-small;
+    padding-right: $padding-small;
+  }
+
+  @include for_breakpoint(mobile tablet) {
+    flex-direction: column;
+    padding: $padding-small - 5 ($padding-small - 5) * 2;
+  }
+}
