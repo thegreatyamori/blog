@@ -41,14 +41,8 @@ class About extends React.Component {
   }
 
   render() {
-    let {
-      about,
-      experience,
-      profilePhoto,
-      skills,
-      tools,
-      interests,
-    } = this.props.data
+    let { about, experience, profilePhoto, skills, tools, interests } =
+      this.props.data
 
     return (
       <Layout>

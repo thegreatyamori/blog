@@ -21,19 +21,19 @@ function Seo({
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
+      render={(data) => {
         const metaKeywords =
           keywords && keywords.length > 0
             ? { name: 'keywords', content: keywords.join(', ') }
             : []
-        const pageUrl = withPrefix(Utils.resolvePageUrl(
-          Config.siteUrl,
-          Config.pathPrefix,
-          path
-        ))
+        const pageUrl = withPrefix(
+          Utils.resolvePageUrl(Config.siteUrl, Config.pathPrefix, path)
+        )
         const metaImageUrl = Utils.resolveUrl(
           Config.siteUrl,
-          imageUrl ? imageUrl : data.file.childImageSharp.gatsbyImageData.images.fallback.src
+          imageUrl
+            ? imageUrl
+            : data.file.childImageSharp.gatsbyImageData.images.fallback.src
         )
 
         return (
@@ -70,15 +70,17 @@ function Seo({
               // Translated versions of page
               .concat(
                 translations
-                  ? translations.map(obj => ({
-                    rel: 'alternate',
-                    hreflang: obj.hreflang,
-                    href: withPrefix(Utils.resolvePageUrl(
-                      Config.siteUrl,
-                      Config.pathPrefix,
-                      obj.path
-                    )),
-                  }))
+                  ? translations.map((obj) => ({
+                      rel: 'alternate',
+                      hreflang: obj.hreflang,
+                      href: withPrefix(
+                        Utils.resolvePageUrl(
+                          Config.siteUrl,
+                          Config.pathPrefix,
+                          obj.path
+                        )
+                      ),
+                    }))
                   : []
               )}
           >

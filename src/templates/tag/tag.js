@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, withPrefix } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 /* App imports */
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
@@ -15,7 +15,9 @@ const TagPage = ({ data, pageContext }) => {
   const tag = pageContext.tag
   const tagName = Config.tags[tag].name || Utils.capitalize(tag)
   const tagPagePath = Config.pages.tag
-  const tagImage = data.allFile.edges.find(edge => edge.node.name === tag).node
+  const tagImage = data.allFile.edges.find(
+    (edge) => edge.node.name === tag
+  ).node
 
   return (
     <Layout>
@@ -30,7 +32,10 @@ const TagPage = ({ data, pageContext }) => {
           <h1>{tagName}</h1>
         </div>
         <div className={style.cover}>
-          <GatsbyImage image={tagImage.childImageSharp.gatsbyImageData} alt={tagImage.base} />
+          <GatsbyImage
+            image={tagImage.childImageSharp.gatsbyImageData}
+            alt={tagImage.base}
+          />
         </div>
       </div>
       <PostList posts={data.allMarkdownRemark.edges} />
@@ -62,7 +67,7 @@ TagPage.propTypes = {
 }
 
 export const pageQuery = graphql`
-  query($tag: String!) {
+  query ($tag: String!) {
     allMarkdownRemark(
       filter: {
         frontmatter: { tags: { in: [$tag] } }
@@ -80,7 +85,11 @@ export const pageQuery = graphql`
             excerpt
             cover {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 600
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }
@@ -93,7 +102,11 @@ export const pageQuery = graphql`
           name
           base
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, height: 200, placeholder: TRACED_SVG)
+            gatsbyImageData(
+              layout: CONSTRAINED
+              height: 200
+              placeholder: TRACED_SVG
+            )
           }
         }
       }

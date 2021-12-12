@@ -12,17 +12,17 @@ class Comments extends React.Component {
     if (window.DISQUS) {
       window.DISQUS.reset({
         reload: true,
-        config: function() {
+        config: function () {
           this.page.url = pageCanonicalUrl
           this.page.identifier = pageId
         },
       })
     } else {
-      window.disqus_config = function() {
+      window.disqus_config = function () {
         this.page.url = pageCanonicalUrl
         this.page.identifier = pageId
       }
-      ;(function() {
+      ;(function () {
         var d = document,
           s = d.createElement('script')
         s.src = Config.disqusScript

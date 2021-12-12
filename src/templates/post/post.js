@@ -72,7 +72,7 @@ const Post = ({ data, pageContext }) => {
 }
 
 export const pageQuery = graphql`
-  query($postPath: String!) {
+  query ($postPath: String!) {
     markdownRemark(frontmatter: { path: { eq: $postPath } }) {
       html
       timeToRead
@@ -84,7 +84,11 @@ export const pageQuery = graphql`
         excerpt
         cover {
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, width: 1000, placeholder: TRACED_SVG)
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 1000
+              placeholder: TRACED_SVG
+            )
           }
         }
       }
@@ -104,7 +108,11 @@ export const pageQuery = graphql`
             excerpt
             cover {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 600
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }

@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { Link, withPrefix } from 'gatsby'
-import { FaBars, FaTimes, FaGithub, FaLinkedin, FaInstagram } from 'react-icons/fa'
+import {
+  FaBars,
+  FaTimes,
+  FaGithub,
+  FaLinkedin,
+  FaInstagram,
+} from 'react-icons/fa'
 /* App imports */
 import useEvent from '../../hooks/useEvent'
 import * as style from './header.module.less'
@@ -61,13 +67,19 @@ const Header = () => {
       >
         <ul>
           <li>
-            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.home))}>Inicio</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.home))}>
+              Inicio
+            </Link>
           </li>
           <li>
-            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.tag))}>Tags</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.tag))}>
+              Tags
+            </Link>
           </li>
           <li>
-            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.about))}>Sobre mí</Link>
+            <Link to={withPrefix(Utils.resolvePageUrl(Config.pages.about))}>
+              Sobre mí
+            </Link>
           </li>
         </ul>
         <ul>
