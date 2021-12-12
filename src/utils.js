@@ -34,9 +34,9 @@ const Utils = {
    */
   getSuggestedPosts: (post, postList, limit) => {
     // Get the number of common tags with provided post.
-    let getTagScore = edge => {
+    let getTagScore = (edge) => {
       let commonTags = 0
-      edge.node.frontmatter.tags.forEach(tag => {
+      edge.node.frontmatter.tags.forEach((tag) => {
         commonTags += post.frontmatter.tags.indexOf(tag) !== -1 ? 1 : 0
       })
       return commonTags
@@ -76,7 +76,7 @@ const Utils = {
    * @param {string} str string to capitalize
    * @return {string} string with first letter to uppercase
    */
-  capitalize: str => str[0].toUpperCase() + str.slice(1),
+  capitalize: (str) => str[0].toUpperCase() + str.slice(1),
 }
 
 module.exports = Utils

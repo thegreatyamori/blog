@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, withPrefix } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 /* App imports */
 import * as style from './404.module.less'
 import Layout from '../../components/layout'
@@ -21,7 +21,10 @@ const NotFoundPage = ({ data }) => (
     />
     <div className={style.container}>
       <div className={style.image}>
-        <GatsbyImage image={data.file.childImageSharp.gatsbyImageData} alt="404" />
+        <GatsbyImage
+          image={data.file.childImageSharp.gatsbyImageData}
+          alt="404"
+        />
       </div>
       <div className={style.message}>
         <h1>Página no encontrada</h1>
@@ -47,7 +50,11 @@ export const query = graphql`
   {
     file(base: { eq: "404.png" }) {
       childImageSharp {
-        gatsbyImageData(layout: CONSTRAINED, width: 400, placeholder: TRACED_SVG)
+        gatsbyImageData(
+          layout: CONSTRAINED
+          width: 400
+          placeholder: TRACED_SVG
+        )
       }
     }
   }

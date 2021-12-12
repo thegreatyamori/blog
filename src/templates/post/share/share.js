@@ -68,10 +68,7 @@ const Share = ({ pageCanonicalUrl, title, description, tags, coverUrl }) => (
         >
           <FaWhatsappSquare color="#01e675" />
         </WhatsappShareButton>
-        <TelegramShareButton
-          url={pageCanonicalUrl}
-          title={title}
-        >
+        <TelegramShareButton url={pageCanonicalUrl} title={title}>
           <FaTelegram color="#31ADE0" />
         </TelegramShareButton>
         <EmailShareButton url={pageCanonicalUrl} subject={title}>

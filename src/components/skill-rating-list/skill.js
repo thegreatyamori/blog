@@ -20,11 +20,7 @@ const iconsNameMap = {
 export const Skill = ({ name, metaImg, rating, category }) => {
   return (
     <div key={name} className="skill__item">
-      <GatsbyImage
-        image={metaImg}
-        alt={name + '-logo'}
-        title={name}
-      />
+      <GatsbyImage image={metaImg} alt={name + '-logo'} title={name} />
       <label>{name}</label>
       <SkillRating rating={rating} category={category} />
     </div>

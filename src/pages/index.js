@@ -40,7 +40,11 @@ export const query = graphql`
             excerpt
             cover {
               childImageSharp {
-              gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 600
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }

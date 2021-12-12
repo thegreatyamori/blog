@@ -40,7 +40,7 @@ Archive.propTypes = {
 }
 
 export const query = graphql`
-  query($postPaths: [String!]) {
+  query ($postPaths: [String!]) {
     allMarkdownRemark(
       filter: {
         frontmatter: { path: { in: $postPaths } }
@@ -58,7 +58,11 @@ export const query = graphql`
             excerpt
             cover {
               childImageSharp {
-                gatsbyImageData(layout: CONSTRAINED, width: 600, placeholder: TRACED_SVG)
+                gatsbyImageData(
+                  layout: CONSTRAINED
+                  width: 600
+                  placeholder: TRACED_SVG
+                )
               }
             }
           }

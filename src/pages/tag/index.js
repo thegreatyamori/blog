@@ -2,7 +2,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql, Link, withPrefix } from 'gatsby'
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 /* App imports */
 import Layout from '../../components/layout'
 import Seo from '../../components/seo'
@@ -12,15 +12,14 @@ import * as style from './tag.module.less'
 
 const Tag = ({ data }) => {
   const rawTags = data.allMarkdownRemark.edges
-    .map(edge => edge.node.frontmatter.tags)
+    .map((edge) => edge.node.frontmatter.tags)
     .reduce((prev, curr) => prev.concat(curr))
 
   const tags = rawTags
     .filter((tag, index) => index === rawTags.indexOf(tag))
     .sort() // Remove duplicates and sort values
-  const getTagImageProps = (tag) => data.allFile.edges
-    .find(edge => edge.node.name === tag)
-    .node
+  const getTagImageProps = (tag) =>
+    data.allFile.edges.find((edge) => edge.node.name === tag).node
   const tagPage = Config.pages.tag
 
   return (
@@ -31,7 +30,7 @@ const Tag = ({ data }) => {
         path={tagPage}
       />
       <div>
-        {tags.map(tag => (
+        {tags.map((tag) => (
           <Link
             to={withPrefix(Utils.resolvePageUrl(tagPage, tag))}
             className={style.card}
@@ -46,7 +45,9 @@ const Tag = ({ data }) => {
             <div className={style.content}>
               <h2>{Config.tags[tag].name || Utils.capitalize(tag)}</h2>
               <p>{Config.tags[tag].description}</p>
-              <label>{`${rawTags.filter(sTag => sTag === tag).length} Entrada/s`}</label>
+              <label>{`${
+                rawTags.filter((sTag) => sTag === tag).length
+              } Entrada/s`}</label>
             </div>
           </Link>
         ))}
@@ -101,7 +102,11 @@ export const query = graphql`
           name
           base
           childImageSharp {
-            gatsbyImageData(layout: CONSTRAINED, width: 100, placeholder: TRACED_SVG)
+            gatsbyImageData(
+              layout: CONSTRAINED
+              width: 100
+              placeholder: TRACED_SVG
+            )
           }
         }
       }
