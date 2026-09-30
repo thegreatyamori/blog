@@ -5,7 +5,6 @@ import {
   FaTimes,
   FaGithub,
   FaLinkedin,
-  FaInstagram,
 } from 'react-icons/fa'
 /* App imports */
 import useEvent from '../../hooks/useEvent'
@@ -99,15 +98,6 @@ const Header = () => {
               href={Config.social.linkedin}
             >
               <FaLinkedin size="30" />
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="nofollow noopener noreferrer"
-              href={Config.social.instagram}
-            >
-              <FaInstagram size="30" />
             </a>
           </li>
         </ul>

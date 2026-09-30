@@ -3,7 +3,7 @@ module.exports = {
   pathPrefix: '',
   siteUrl: 'https://jersonalexander.now.sh',
   siteTitle: 'jerson alexander',
-  siteDescription: 'desarrollador front-end y un poco más...',
+  siteDescription: 'Backend + Juegos de mesa !',
   author: 'thegreatyamori',
   postsForArchivePage: 3,
   defaultLanguage: 'es',
@@ -18,7 +18,6 @@ module.exports = {
   social: {
     github: 'https://github.com/thegreatyamori',
     linkedin: 'https://www.linkedin.com/in/thegreatyamori/',
-    instagram: 'https://www.instagram.com/thegreatyamori/',
   },
   footer: {
     jsEcuador: {
