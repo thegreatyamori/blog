@@ -46,11 +46,6 @@ class About extends React.Component {
 
     return (
       <Layout>
-        <Seo
-          title="About"
-          description="A brief summary of this blog"
-          path="about"
-        />
         <div className={style.container}>
           <div className={style.profile}>
             <div className={style.photo}>
@@ -169,5 +164,13 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => (
+  <Seo
+    title="About"
+    description="A brief summary of this blog"
+    path="about"
+  />
+)
 
 export default About

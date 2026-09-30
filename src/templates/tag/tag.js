@@ -21,12 +21,6 @@ const TagPage = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Seo
-        title={tagName}
-        description={`All post about ${tagName}`}
-        path={withPrefix(Utils.resolvePageUrl(tagPagePath, tag))}
-        keywords={[tagName]}
-      />
       <div className={style.heading}>
         <div>
           <h1>{tagName}</h1>
@@ -113,5 +107,19 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export const Head = ({ pageContext }) => {
+  const tag = pageContext.tag
+  const tagName = Config.tags[tag].name || Utils.capitalize(tag)
+  const tagPagePath = Config.pages.tag
+  return (
+    <Seo
+      title={tagName}
+      description={`All post about ${tagName}`}
+      path={withPrefix(Utils.resolvePageUrl(tagPagePath, tag))}
+      keywords={[tagName]}
+    />
+  )
+}
 
 export default TagPage

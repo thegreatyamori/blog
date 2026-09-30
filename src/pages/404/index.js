@@ -13,12 +13,6 @@ import Utils from '../../utils'
 
 const NotFoundPage = ({ data }) => (
   <Layout>
-    <Seo
-      title="404: Page not found"
-      description="404 Page"
-      path="404"
-      keywords={['javascript', 'frontend', 'blog']}
-    />
     <div className={style.container}>
       <div className={style.image}>
         <GatsbyImage
@@ -59,4 +53,13 @@ export const query = graphql`
     }
   }
 `
+export const Head = () => (
+  <Seo
+    title="404: Page not found"
+    description="404 Page"
+    path="404"
+    keywords={['javascript', 'frontend', 'blog']}
+  />
+)
+
 export default NotFoundPage

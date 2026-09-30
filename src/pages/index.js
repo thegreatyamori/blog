@@ -11,7 +11,6 @@ import Config from '../../config'
 
 const IndexPage = ({ data }) => (
   <Layout>
-    <Seo title="Home" description={Config.siteDescription} path="" />
     <PostList posts={data.allMarkdownRemark.edges} />
     <ArchivePagination nextPage={2} />
   </Layout>
@@ -53,5 +52,9 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => (
+  <Seo title="Home" description={Config.siteDescription} path="" />
+)
 
 export default IndexPage

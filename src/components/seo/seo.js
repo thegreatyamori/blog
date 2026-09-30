@@ -1,8 +1,7 @@
 /* Vendor imports */
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
-import { StaticQuery, graphql, withPrefix } from 'gatsby'
+import { useStaticQuery, graphql, withPrefix } from 'gatsby'
 /* App imports */
 import Config from '../../../config'
 import Utils from '../../utils'
@@ -18,77 +17,68 @@ function Seo({
   translations,
   meta,
 }) {
-  return (
-    <StaticQuery
-      query={detailsQuery}
-      render={(data) => {
-        const metaKeywords =
-          keywords && keywords.length > 0
-            ? { name: 'keywords', content: keywords.join(', ') }
-            : []
-        const pageUrl = withPrefix(
-          Utils.resolvePageUrl(Config.siteUrl, Config.pathPrefix, path)
-        )
-        const metaImageUrl = Utils.resolveUrl(
-          Config.siteUrl,
-          imageUrl
-            ? imageUrl
-            : data.file.childImageSharp.gatsbyImageData.images.fallback.src
-        )
+  const data = useStaticQuery(detailsQuery)
+  const metaKeywords =
+    keywords && keywords.length > 0
+      ? { name: 'keywords', content: keywords.join(', ') }
+      : []
+  const pageUrl = withPrefix(
+    Utils.resolvePageUrl(Config.siteUrl, Config.pathPrefix, path)
+  )
+  const metaImageUrl = Utils.resolveUrl(
+    Config.siteUrl,
+    imageUrl
+      ? imageUrl
+      : data.file.childImageSharp.gatsbyImageData.images.fallback.src
+  )
+  const metaTags = [
+    { name: 'description', content: description }, // Page description
+    /* Open Graph */
+    { property: 'og:title', content: title },
+    { property: 'og:type', content: contentType || 'website' },
+    { property: 'og:url', content: pageUrl },
+    { property: 'og:description', content: description },
+    { property: 'og:image', content: metaImageUrl },
+    { property: 'og:image:alt', content: description },
+    { property: 'og:site_name', content: Config.siteTitle },
+    { property: 'og:locale', content: lang || 'es_ES' },
+    /* Twitter card */
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: title },
+    { name: 'twitter:description', content: description },
+    { name: 'twitter:image', content: metaImageUrl },
+    { name: 'twitter:image:alt', content: description },
+    { name: 'twitter:site', content: Config.author },
+    { name: 'twitter:creator', content: Config.author },
+  ]
+    .concat(metaKeywords) // Keywords
+    .concat(meta || []) // Other provided metadata
+  const links = [
+    { rel: 'canonical', href: pageUrl }, // Canonical url
+  ].concat(
+    // Translated versions of page
+    translations
+      ? translations.map((obj) => ({
+          rel: 'alternate',
+          hreflang: obj.hreflang,
+          href: withPrefix(
+            Utils.resolvePageUrl(Config.siteUrl, Config.pathPrefix, obj.path)
+          ),
+        }))
+      : []
+  )
 
-        return (
-          <Helmet
-            title={title} // Page title
-            titleTemplate={`%s | ${Config.siteTitle}`}
-            meta={
-              [
-                { name: 'description', content: description }, // Page description
-                /* Open Graph */
-                { property: 'og:title', content: title },
-                { property: 'og:type', content: contentType || 'website' },
-                { property: 'og:url', content: pageUrl },
-                { property: 'og:description', content: description },
-                { property: 'og:image', content: metaImageUrl },
-                { property: 'og:image:alt', content: description },
-                { property: 'og:site_name', content: Config.siteTitle },
-                { property: 'og:locale', content: lang || 'es_ES' },
-                /* Twitter card */
-                { name: 'twitter:card', content: 'summary_large_image' },
-                { name: 'twitter:title', content: title },
-                { name: 'twitter:description', content: description },
-                { name: 'twitter:image', content: metaImageUrl },
-                { name: 'twitter:image:alt', content: description },
-                { name: 'twitter:site', content: Config.author },
-                { name: 'twitter:creator', content: Config.author },
-              ]
-                .concat(metaKeywords) // Keywords
-                .concat(meta || []) // Other provided metadata
-            }
-            link={[
-              { rel: 'canonical', href: pageUrl }, // Canonical url
-            ]
-              // Translated versions of page
-              .concat(
-                translations
-                  ? translations.map((obj) => ({
-                      rel: 'alternate',
-                      hreflang: obj.hreflang,
-                      href: withPrefix(
-                        Utils.resolvePageUrl(
-                          Config.siteUrl,
-                          Config.pathPrefix,
-                          obj.path
-                        )
-                      ),
-                    }))
-                  : []
-              )}
-          >
-            <html lang="es" />
-          </Helmet>
-        )
-      }}
-    />
+  return (
+    <>
+      <title>{`${title} | ${Config.siteTitle}`}</title>
+      <html lang="es" />
+      {metaTags.map((obj, i) => (
+        <meta key={i} {...obj} />
+      ))}
+      {links.map((obj, i) => (
+        <link key={i} {...obj} />
+      ))}
+    </>
   )
 }
 
