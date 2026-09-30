@@ -4,7 +4,7 @@
     <p align="center">If you are looking for a site <strong>ready to go in production</strong> and with <strong>most common features out of the box</strong>, you should give a change to this starter! Not every blog needs of a CMS or other complex solutions. This blog is made for who want share its thoughs in minutes without care of SEO, server or database concerns. <strong>You can deploy it on the host you want at the cheapest price</strong> because it is built only with HTML, CSS, JS and it doesn't need of backend to work. It is <strong>mostly designed for blogs and portfolios</strong>. But despite the fact that it allows to automates the most common features of these types of site (ex. tags, SEO, archive...), it is high customizable and extensible.</p>
 </p>
 
-[![Deploy](https://github.com/thegreatyamori/blog/actions/workflows/deploy.yml/badge.svg)](https://github.com/thegreatyamori/blog/actions/workflows/deploy.yml)
+[![CI](https://github.com/thegreatyamori/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/thegreatyamori/blog/actions/workflows/ci.yml)
 
 ## Summary
 
