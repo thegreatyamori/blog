@@ -1,6 +1,5 @@
 import React from 'react'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { SkillRating } from './rating'
 
 const iconsNameMap = {
   css: 'CSS',
@@ -17,12 +16,11 @@ const iconsNameMap = {
   aws_s3: 'AWS S3',
 }
 
-export const Skill = ({ name, metaImg, rating, category }) => {
+export const Skill = ({ name, metaImg }) => {
   return (
     <div key={name} className="skill__item">
       <GatsbyImage image={metaImg} alt={name + '-logo'} title={name} />
       <label>{name}</label>
-      <SkillRating rating={rating} category={category} />
     </div>
   )
 }

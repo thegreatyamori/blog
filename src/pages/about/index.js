@@ -122,7 +122,6 @@ export const query = graphql`
         node {
           id
           name
-          rating
           group
           image {
             childImageSharp {
@@ -137,7 +136,6 @@ export const query = graphql`
         node {
           id
           name
-          rating
           group
           image {
             childImageSharp {
@@ -152,7 +150,6 @@ export const query = graphql`
         node {
           id
           name
-          rating
           group
           image {
             childImageSharp {
