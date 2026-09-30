@@ -1,21 +1,21 @@
 ---
-title: "Un MCP en Rust para consultar el diccionario técnico de Oracle Fusion ERP"
+title: "Un MCP en Rust para consultar la documentación de las tablas de Oracle Fusion ERP"
 date: 2026-09-30
 tags: [oracle, mcp, ai, rust]
 path: blog/oracle-erp-mcp
 cover: ./preview.jpg
-excerpt: "Nació de un dolor real: construir reportes BI sobre Oracle Fusion con un agente que se inventa tablas y columnas. Indexé el diccionario técnico en SQLite + FTS5 y lo expuse como servidor MCP en Rust."
+excerpt: "Nació de un problema concreto: construir reportes BI sobre Oracle Fusion con un agente que se inventa tablas y columnas. Indexé la documentación de las tablas en SQLite + FTS5 y lo expuse como servidor MCP en Rust."
 ---
 
-Este proyecto no nació de una idea bonita, nació de un dolor muy concreto: **construir reportes BI sobre Oracle Fusion con un agente de IA que se inventa las tablas**.
+Este proyecto nació de un problema bastante concreto: **construir reportes BI sobre Oracle Fusion con un agente de IA que se inventa las tablas**.
 
-El equipo trabaja a diario contra el diccionario técnico de Oracle Fusion, y la documentación oficial es —siendo generoso— hostil: miles de tablas repartidas en el *Oracle Help Center*, sin un buscador decente, versionadas release por release y con la información dispersa entre páginas que un LLM no puede recorrer en tiempo de inferencia. El resultado es predecible: le pides al agente de Cursor un reporte, escribe la consulta con `AP_INVOICES_...` y el nombre real de la tabla era otro, o la columna que usa simplemente no existe. Y ese error no revienta al compilar: aparece cuando el reporte ya está en manos de alguien y los números no cuadran.
+Mi equipo trabaja a diario contra la documentación de las tablas de Oracle Fusion, y la documentación oficial tampoco ayuda: miles de tablas repartidas en el *Oracle Help Center*, sin un buscador decente, versionadas release por release y con la información dispersa entre páginas que un LLM no puede recorrer en tiempo de inferencia. El resultado es predecible: le pides al agente de Cursor un reporte, escribe la consulta con `AP_INVOICES_...` y el nombre real de la tabla era otro, o la columna que usa simplemente no existe. Y ese error no revienta al compilar: aparece cuando el reporte ya está en manos de alguien y los números no cuadran.
 
-De ahí nació **oracle-fusion-erp-catalog-mcp**: un RAG léxico, sin embeddings, empaquetado como servidor [MCP](https://modelcontextprotocol.io) en Rust. Indexa localmente el diccionario técnico de Oracle Fusion Financials y SCM y expone herramientas de consulta exacta, búsqueda léxica, estructura y **joins reales**. La meta es concreta: que el equipo construya reportes BI con metadatos verificables en lugar de nombres inventados.
+De ahí nació **oracle-fusion-erp-catalog-mcp**: un RAG léxico, sin embeddings, empaquetado como servidor [MCP](https://modelcontextprotocol.io) en Rust. Indexa localmente la documentación de las tablas de Oracle Fusion Financials y SCM y expone herramientas de consulta exacta, búsqueda léxica, estructura y **joins reales**. La meta es concreta: que mi equipo construya reportes BI con metadatos verificables en lugar de nombres inventados.
 
 ## Por qué un índice léxico y no embeddings
 
-Lo importante es entender que el diccionario **sí es información oficial y precisa**: publica, release por release (26A, 26B, …), las tablas de cada módulo con sus columnas, índices y referencias. El problema no es la calidad del dato, es el formato:
+Lo importante es entender que la documentación **sí es información oficial y precisa**: publica, release por release (26A, 26B, …), las tablas de cada módulo con sus columnas, índices y referencias. El problema no es la calidad del dato, es el formato:
 
 - está pensado para leerse en un navegador, no para consultarse;
 - cambia entre releases y conviene mantenerlas separadas;
@@ -122,7 +122,7 @@ En lugar de que el agente proponga un join "probable", recibe el constraint real
 
 ## Sincronización versionada
 
-El comando `sync` descarga y parsea el diccionario desde Oracle Help Center, y trabaja por release y módulo:
+El comando `sync` descarga y parsea la documentación desde Oracle Help Center, y trabaja por release y módulo:
 
 ```sh
 oracle-fusion-erp-catalog-mcp sync --release 26B
@@ -134,7 +134,6 @@ Al terminar, activa la release nueva y elimina la anterior solo si tuvo éxito. 
 ## Cosas que aprendí construyéndolo
 
 - **El índice FTS5 hay que persistirlo explícitamente.** Al principio se reconstruía en cada arranque y el servidor tardaba de más; ahora se puebla al sincronizar y se reconstruye solo cuando una migración lo exige.
-- **Migrar de esquema se vuelve urgente.** La primera versión tenía el esquema en español (`tablas`, `columnas`, `referencias`). Renombrarlo después implicó una migración con detección de columnas y reconstrucción del índice, no un simple `ALTER TABLE`.
 - **`panic!`/`unwrap()` no tienen lugar aquí.** El servidor nunca debe morir por una entrada rara: todo se propaga con `Result` y `thiserror`, y los tests (`cargo test --workspace`) cubren el proceso MCP completo, no solo las funciones.
 - **No inventar metadatos es un requisito, no un estilo.** Cada fila conserva release, módulo y `source_url`; si un dato no está en la fuente, no existe.
 - **Los instaladores de agentes son configuración ajena.** El registro en Cursor, Claude Code, Codex y OpenCode es idempotente, preserva lo que no le pertenece y soporta `--dry-run`.
@@ -154,6 +153,6 @@ La base se resuelve al directorio de datos del usuario según la plataforma, y `
 
 ## Cierre
 
-La lección de fondo no es "usa FTS5": es que **un agente solo es útil si sus herramientas son deterministas**. Cuando puede pedir la estructura real de una tabla y el join que Oracle publica, deja de adivinar y empieza a construir. Ese era exactamente el punto: el equipo no debería gastar la tarde reconciliando nombres de columnas inventados, debería gastarla en el reporte BI. Meter el diccionario en SQLite con herramientas precisas cuesta mucho menos que depurar un número equivocado.
+La lección de fondo no es "usa FTS5": es que **un agente solo es útil si sus herramientas son deterministas**. Cuando puede pedir la estructura real de una tabla y el join que Oracle publica, deja de adivinar y empieza a construir. Ese era exactamente el punto: mi equipo no debería gastar la tarde reconciliando nombres de columnas inventados, debería gastarla en el reporte BI. Meter la documentación en SQLite con herramientas precisas cuesta mucho menos que depurar un número equivocado.
 
 *Oracle y Oracle Fusion son marcas de Oracle Corporation. Este proyecto no está afiliado ni respaldado por Oracle.*
