@@ -16,11 +16,6 @@ const Archive = ({ data, pageContext }) => {
 
   return (
     <Layout title="Archive">
-      <Seo
-        title={`Archive | Page ${archivePage}`}
-        description="Old posts"
-        path={Config.pages.archive}
-      />
       <PostList posts={data.allMarkdownRemark.edges} />
       <ArchivePagination prevPage={prevPage} nextPage={nextPage} />
     </Layout>
@@ -71,5 +66,13 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = ({ pageContext }) => (
+  <Seo
+    title={`Archive | Page ${pageContext.archivePage}`}
+    description="Old posts"
+    path={Config.pages.archive}
+  />
+)
 
 export default Archive

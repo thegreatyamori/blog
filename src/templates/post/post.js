@@ -36,15 +36,6 @@ const Post = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Seo
-        title={title}
-        description={excerpt}
-        path={path}
-        contentType="article"
-        imageUrl={img.src}
-        keywords={tags}
-        translations={translations}
-      />
       <div className={style.container}>
         <Heading title={title} tags={tags} cover={img} coverTitle={excerpt} />
         <div className={style.content}>
@@ -126,4 +117,23 @@ export const pageQuery = graphql`
     }
   }
 `
+export const Head = ({ data, pageContext }) => {
+  const { frontmatter } = data.markdownRemark
+  const { title, tags, cover, path, excerpt } = frontmatter
+  const translations =
+    pageContext.translations.length > 1 ? pageContext.translations : null
+  const img = cover.childImageSharp.gatsbyImageData
+  return (
+    <Seo
+      title={title}
+      description={excerpt}
+      path={path}
+      contentType="article"
+      imageUrl={img.images.fallback.src}
+      keywords={tags}
+      translations={translations}
+    />
+  )
+}
+
 export default Post

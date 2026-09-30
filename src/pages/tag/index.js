@@ -24,11 +24,6 @@ const Tag = ({ data }) => {
 
   return (
     <Layout title="Tags">
-      <Seo
-        title="Tags"
-        description="All present tags in the site"
-        path={tagPage}
-      />
       <div>
         {tags.map((tag) => (
           <Link
@@ -113,5 +108,13 @@ export const query = graphql`
     }
   }
 `
+
+export const Head = () => (
+  <Seo
+    title="Tags"
+    description="All present tags in the site"
+    path={Config.pages.tag}
+  />
+)
 
 export default Tag
