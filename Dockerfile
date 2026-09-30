@@ -1,8 +1,7 @@
-FROM node:16
-RUN yarn global add gatsby-cli
-EXPOSE 8000
+FROM node:22
 WORKDIR /myapp
-COPY ./package.json /myapp
-RUN yarn install && yarn cache clean
-COPY . /myapp
-CMD ["gatsby", "develop", "-H", "0.0.0.0" ]
+COPY package.json package-lock.json ./
+RUN npm ci
+COPY . .
+EXPOSE 8000
+CMD ["npm", "run", "start"]
