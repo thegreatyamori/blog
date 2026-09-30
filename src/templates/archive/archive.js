@@ -46,7 +46,7 @@ export const query = graphql`
         frontmatter: { path: { in: $postPaths } }
         fileAbsolutePath: { regex: "/index.md$/" }
       }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

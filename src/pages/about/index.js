@@ -97,7 +97,7 @@ class About extends React.Component {
 
 export const query = graphql`
   {
-    about: allAboutJson(sort: { fields: date, order: DESC }) {
+    about: allAboutJson(sort: { date: DESC }) {
       edges {
         node {
           summary
