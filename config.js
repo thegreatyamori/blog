@@ -101,5 +101,25 @@ module.exports = {
       description:
         'es la última evolución del lenguaje de las Hojas de Estilo en Cascada (Cascading Style Sheets), y pretende ampliar la versión CSS2.',
     },
+    oracle: {
+      name: 'Oracle',
+      description:
+        'Oracle Fusion Cloud es la suite de aplicaciones empresariales en la nube de Oracle: ERP (Financials y SCM) y EPM.',
+    },
+    mcp: {
+      name: 'MCP',
+      description:
+        'Model Context Protocol: protocolo abierto para conectar asistentes de IA con herramientas y datos externos mediante JSON-RPC 2.0.',
+    },
+    ai: {
+      name: 'IA',
+      description:
+        'Inteligencia artificial aplicada: agentes, LLMs y las herramientas que los vuelven útiles.',
+    },
+    rust: {
+      name: 'Rust',
+      description:
+        'Rust es un lenguaje de programación de sistemas con seguridad de memoria y rendimiento, sin recolector de basura.',
+    },
   }
 }
