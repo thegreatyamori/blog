@@ -2,6 +2,7 @@ const config = require('./config');
 const feedPlugin = require('./gatsby-config.plugins.feed')
 
 module.exports = {
+  trailingSlash: 'always',
   pathPrefix: config.pathPrefix,
   siteMetadata: {
     // Data used by some gatsby plugins
@@ -13,7 +14,6 @@ module.exports = {
     "gatsby-plugin-sass",
     'gatsby-plugin-less',
     "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
     "gatsby-transformer-sharp",
     "gatsby-plugin-sharp",
     // {
@@ -73,13 +73,6 @@ module.exports = {
           },
           'gatsby-remark-prismjs',
         ],
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyDefault: config.defaultLanguage,
-        useLangKeyLayout: false,
       },
     },
     `gatsby-transformer-json`,

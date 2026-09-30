@@ -8,19 +8,19 @@ export const SkillRating = ({ rating, category }) => {
   const ratingReadOnly = true
   const icons = {
     interests: {
-      fullIcon: <HiHeart />,
+      fillIcon: <HiHeart />,
       emptyIcon: <HiOutlineHeart />,
       fullColor: '#c30030',
       emptyColor: '#ff6188',
     },
     skills: {
-      fullIcon: <MdCircle />,
+      fillIcon: <MdCircle />,
       emptyIcon: <MdPanoramaFishEye />,
       fullColor: '#ffffff',
       emptyColor: '#9d9d9d',
     },
     tools: {
-      fullIcon: <MdCircle />,
+      fillIcon: <MdCircle />,
       emptyIcon: <MdPanoramaFishEye />,
       fullColor: '#ffffff',
       emptyColor: '#ffffff',
@@ -31,12 +31,12 @@ export const SkillRating = ({ rating, category }) => {
 
   return (
     <Rating
-      ratingValue={rating}
+      initialValue={rating}
       iconsCount={ratingRange}
       readonly={ratingReadOnly}
       fillColor={selectIcon(category).fullColor}
       emptyColor={selectIcon(category).emptyColor}
-      fullIcon={selectIcon(category).fullIcon}
+      fillIcon={selectIcon(category).fillIcon}
       emptyIcon={selectIcon(category).emptyIcon}
     />
   )
