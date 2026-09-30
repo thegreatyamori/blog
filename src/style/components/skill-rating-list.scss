@@ -4,8 +4,12 @@ $padding-small: 9px;
 
 .skill__container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  
+  grid-template-columns: repeat(3, 1fr);
+
+  @include for_breakpoint(mobile) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   @include for_breakpoint(fold) {
     grid-template-columns: repeat(1, 1fr);
   }

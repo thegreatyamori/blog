@@ -3,7 +3,7 @@ module.exports = {
   pathPrefix: '',
   siteUrl: 'https://jersonalexander.now.sh',
   siteTitle: 'jerson alexander',
-  siteDescription: 'Backend + Juegos de mesa !',
+  siteDescription: 'Backend engineer + Juegos de mesa !',
   author: 'thegreatyamori',
   postsForArchivePage: 3,
   defaultLanguage: 'es',
