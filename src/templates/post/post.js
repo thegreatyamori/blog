@@ -75,11 +75,7 @@ export const pageQuery = graphql`
         excerpt
         cover {
           childImageSharp {
-            gatsbyImageData(
-              layout: CONSTRAINED
-              width: 1000
-              placeholder: TRACED_SVG
-            )
+            gatsbyImageData(layout: FULL_WIDTH, placeholder: TRACED_SVG)
           }
         }
       }
