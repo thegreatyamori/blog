@@ -1,4 +1,4 @@
-FROM node:22
+FROM node:24
 WORKDIR /myapp
 COPY package.json package-lock.json ./
 RUN npm ci
